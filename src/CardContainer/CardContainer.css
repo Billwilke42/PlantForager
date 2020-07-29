@@ -1,0 +1,6 @@
+.card-container {
+  display: flex;
+  height: 100vh;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
