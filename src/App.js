@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import Nav from './Nav/Nav'
@@ -15,8 +14,10 @@ function App() {
           <CardContainer />
         </Route>
         <Route path='/search'>
-          <Search />
-          <CardContainer />
+          <div className='find-plants'>
+            <Search />
+            <CardContainer />
+          </div>
         </Route>
         <Route path='/favorites'>
           <Nav />

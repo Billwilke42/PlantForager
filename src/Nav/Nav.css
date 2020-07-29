@@ -3,5 +3,7 @@
   height: 15vh;
   display: flex;
   justify-content: space-between;
-  /* margin-bottom: 5vh; */
+  position: sticky;
+  top:0px;
+  background-color: aquamarine;
 }
