@@ -1,0 +1,9 @@
+.nav-container {
+  border: 1px solid black;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top:0px;
+  background-color: aquamarine;
+}
