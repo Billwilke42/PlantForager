@@ -25,6 +25,7 @@ const CardContainer = (props) => {
     const displayCards = plantsCopy.map(plant => (
       <PlantCard {...plant}
         key={plant.id}
+        id={plant.id}
         handleClick={props.handleClick}
       />
     ))

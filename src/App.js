@@ -3,6 +3,7 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import Nav from './Nav/Nav'
 import CardContainer from './CardContainer/CardContainer'
+import PlantPage from './PlantPage/PlantPage'
 import { hasErrored } from './actions'
 import Search from './Search/Search'
 import { getPlants } from './thunks/getPlants'
@@ -13,9 +14,11 @@ import { connect } from 'react-redux'
 
 class App extends React.Component {
 
-  handleClick = (e) => {
-    e.preventDefault()
-    // this.props.getPlantInfo(e.target.id)
+  handleClick = (event) => {
+    debugger
+    console.log('here', event)
+    console.log(event.target.id)
+    this.props.getPlantInfo(event.target.id)
   }
 
   componentDidMount() {
@@ -46,6 +49,9 @@ class App extends React.Component {
             <Nav />
             <CardContainer />
           </Route>
+          <Route path='/plants/:id'>
+            <PlantPage />
+          </Route>
         </Switch>
       </div>
     );
@@ -65,7 +71,7 @@ const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantId, setPlan
 
 App.propTypes = {
   isLoading: PropTypes.bool,
-  hasErrored: PropTypes.string
+  // hasErrored: PropTypes.string
 
 }
 
