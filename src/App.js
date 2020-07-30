@@ -3,7 +3,7 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import Nav from './Nav/Nav'
 import CardContainer from './CardContainer/CardContainer'
-import { hasErrored, isLoading } from './actions'
+import { hasErrored, isLoading, incrementCurrentPage, decrementCurrentPage } from './actions'
 import Search from './Search/Search'
 import { getPlants } from './thunks/getPlants'
 import PropTypes from 'prop-types';
@@ -12,22 +12,15 @@ import { connect } from 'react-redux'
 
 class App extends React.Component {
 
-  // removeNullPlants = () => {
-  //   debugger
-  //   if (this.props.plants.length > 0) {
-  //     const plantsCopy = []
-  //     this.props.plants.filter((plant, i) => {
-  //       if (plant.image_url !== null) {
-  //           plantsCopy.push(plant) 
-  //         }
-  //       })
-  //     this.props.setPlants(plantsCopy)
-  //   }
-  // }
 
   componentDidMount() {
-    this.props.getPlants()
-    // this.removeNullPlants()
+    this.props.getPlants(1)
+    this.props.getPlants(2)
+    this.props.getPlants(3)
+    this.props.getPlants(4)
+    this.props.getPlants(5)
+    this.props.getPlants(6)
+    this.props.getPlants(7)
   }
   
   render() {
@@ -36,7 +29,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/'>
             <Nav />
-            <CardContainer plants={this.props.plants} />
+            <CardContainer />
           </Route>
           <Route path='/search'>
             <div className='find-plants'>
@@ -55,10 +48,11 @@ class App extends React.Component {
 }
 
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlants }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlants, setCurrentPage }) => ({
   isLoading: isLoading,
   error: hasErrored,
-  plants: setPlants
+  plants: [].concat.apply([], setPlants),
+  page: setCurrentPage
 })
 
 
@@ -70,7 +64,7 @@ App.propTypes = {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ hasErrored, getPlants }, dispatch)
+  bindActionCreators({ hasErrored, getPlants, incrementCurrentPage, decrementCurrentPage }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
