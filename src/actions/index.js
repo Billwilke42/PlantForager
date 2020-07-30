@@ -8,6 +8,10 @@ export const setPlantInfo = plantInfo => ({
   plantInfo
 })
 
+export const resetPlantInfo = () => ({
+  type: 'RESET_PLANT_INFO'
+})
+
 export const setPlantId = plantId => ({
   type: 'SET_PLANT_ID',
   plantId

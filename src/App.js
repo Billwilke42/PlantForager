@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import Nav from './Nav/Nav'
 import CardContainer from './CardContainer/CardContainer'
 import PlantPage from './PlantPage/PlantPage'
-import { hasErrored } from './actions'
+import { resetPlantInfo } from './actions'
 import Search from './Search/Search'
 import { getPlants } from './thunks/getPlants'
 import { getPlantInfo } from './thunks/getPlantInfo'
@@ -14,11 +14,8 @@ import { connect } from 'react-redux'
 
 class App extends React.Component {
 
-  handleClick = (event) => {
-    debugger
-    console.log('here', event)
-    console.log(event.target.id)
-    this.props.getPlantInfo(event.target.id)
+  handleClick = async (event) => {
+    await this.props.getPlantInfo(event.target.id)
   }
 
   componentDidMount() {
@@ -49,9 +46,14 @@ class App extends React.Component {
             <Nav />
             <CardContainer />
           </Route>
-          <Route path='/plants/:id'>
-            <PlantPage />
-          </Route>
+          <Route 
+            exact path='/plant/:id'
+            render={({match}) => {
+              const { id } = match.params
+              return <PlantPage
+                plantInfo={this.props.plantInfo}
+              /> 
+            }}/>
         </Switch>
       </div>
     );
@@ -76,7 +78,7 @@ App.propTypes = {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ hasErrored, getPlants, getPlantInfo }, dispatch)
+  bindActionCreators({ getPlants, getPlantInfo }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
