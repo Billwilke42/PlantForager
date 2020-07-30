@@ -11,6 +11,7 @@ export const getPlants = () => {
         throw Error(response.statusText)
       }
       const data = await response.json()
+      const plantsCopy = []
       dispatch(setPlants( data.data ))
     } catch (error) {
       dispatch(hasErrored(error.message))

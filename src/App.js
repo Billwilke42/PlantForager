@@ -12,8 +12,22 @@ import { connect } from 'react-redux'
 
 class App extends React.Component {
 
+  // removeNullPlants = () => {
+  //   debugger
+  //   if (this.props.plants.length > 0) {
+  //     const plantsCopy = []
+  //     this.props.plants.filter((plant, i) => {
+  //       if (plant.image_url !== null) {
+  //           plantsCopy.push(plant) 
+  //         }
+  //       })
+  //     this.props.setPlants(plantsCopy)
+  //   }
+  // }
+
   componentDidMount() {
-    this.setState({ plants: this.props.getPlants()})
+    this.props.getPlants()
+    // this.removeNullPlants()
   }
   
   render() {

@@ -9,3 +9,8 @@
   z-index: -1;
   /* flex-shrink: 0; */
 }
+
+.page-turner {
+  width: 100%;
+  margin-bottom: 4vh;
+}
