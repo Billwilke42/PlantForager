@@ -1,10 +1,10 @@
 import React from 'react'
 import './PlantCard.css'
 
-const PlantCard = () => {
+const PlantCard = (props) => {
   return (
     <div className='plant-card'>
-      
+      <img src={props.image_url}></img>
     </div>
   )
 }
