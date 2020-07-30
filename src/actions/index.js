@@ -3,6 +3,16 @@ export const setPlants = plants => ({
   plants
 })
 
+export const setPlantInfo = plantInfo => ({
+  type: 'SET_PLANT_INFO',
+  plantInfo
+})
+
+export const setPlantId = plantId => ({
+  type: 'SET_PLANT_ID',
+  plantId
+})
+
 export const hasErrored = message => ({
   type: 'HAS_ERRORED',
   message
@@ -11,16 +21,4 @@ export const hasErrored = message => ({
 export const isLoading = bool => ({
   type: 'IS_LOADING',
   isLoading: bool
-})
-
-export const incrementCurrentPage = () => ({
-  type: 'INCREMENT_CURRENT_PAGE',
-})
-
-export const decrementCurrentPage = () => ({
-  type: 'DECREMENT_CURRENT_PAGE',
-})
-
-export const resetCurrentPage = () => ({
-  type: 'RESET_CURRENT_PAGE'
 })

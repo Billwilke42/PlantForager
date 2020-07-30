@@ -3,24 +3,29 @@ import './App.css';
 import { Switch, Route } from 'react-router-dom'
 import Nav from './Nav/Nav'
 import CardContainer from './CardContainer/CardContainer'
-import { hasErrored, isLoading, incrementCurrentPage, decrementCurrentPage } from './actions'
+import { hasErrored } from './actions'
 import Search from './Search/Search'
 import { getPlants } from './thunks/getPlants'
+import { getPlantInfo } from './thunks/getPlantInfo'
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class App extends React.Component {
 
+  handleClick = (e) => {
+    e.preventDefault()
+    // this.props.getPlantInfo(e.target.id)
+  }
 
   componentDidMount() {
     this.props.getPlants(1)
-    this.props.getPlants(2)
-    this.props.getPlants(3)
-    this.props.getPlants(4)
-    this.props.getPlants(5)
-    this.props.getPlants(6)
-    this.props.getPlants(7)
+    // this.props.getPlants(2)
+    // this.props.getPlants(3)
+    // this.props.getPlants(4)
+    // this.props.getPlants(5)
+    // this.props.getPlants(6)
+    // this.props.getPlants(7)
   }
   
   render() {
@@ -29,7 +34,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/'>
             <Nav />
-            <CardContainer />
+            <CardContainer handleClick={this.handleClick} />
           </Route>
           <Route path='/search'>
             <div className='find-plants'>
@@ -48,11 +53,12 @@ class App extends React.Component {
 }
 
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlants, setCurrentPage }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantId, setPlantInfo }) => ({
   isLoading: isLoading,
   error: hasErrored,
   plants: [].concat.apply([], setPlants),
-  page: setCurrentPage
+  plantId: setPlantId,
+  plantInfo: setPlantInfo
 })
 
 
@@ -64,7 +70,7 @@ App.propTypes = {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ hasErrored, getPlants, incrementCurrentPage, decrementCurrentPage }, dispatch)
+  bindActionCreators({ hasErrored, getPlants, getPlantInfo }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
