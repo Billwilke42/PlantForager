@@ -1,7 +1,16 @@
 .card-container {
-  display: flex;
-  height: 100vh;
-  justify-content: space-around;
+  display: inline-flex;
+  min-height: 100%;
+  align-items: center;
   flex-wrap: wrap;
   overflow-y: auto;
+  justify-content: space-around;
+  /* width: 100% */
+  z-index: -1;
+  /* flex-shrink: 0; */
+}
+
+.page-turner {
+  width: 100%;
+  margin-bottom: 4vh;
 }

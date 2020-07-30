@@ -3,7 +3,8 @@
   height: 15vh;
   display: flex;
   justify-content: space-between;
-  position: sticky;
+  position: sticky; 
   top:0px;
   background-color: aquamarine;
+  z-index: 1
 }

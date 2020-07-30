@@ -1,7 +1,10 @@
 .plant-card {
   border: 1px solid black;
-  height: 380px;
-  width: 265px;
-  margin: 1vw;
-  margin-top: 1vh;
+  z-index: -1;
+  margin: 2vh 2vw 2vh 2vw;
+}
+
+img {
+  max-width: auto;
+  max-height: 380px;
 }
