@@ -9,14 +9,14 @@ const PlantCard = (props) => {
         <img 
         className='plant-pic'
         id={props.id}
+        data-testid={props.id}
         src={props.image_url}
         alt={`${props.common_name}`}
         onClick={e => props.handleClick(e)}
         />
       </Link>
       <div className='card-bottom'>
-        {props.common_name}<br></br> 
-        {props.scientific_name}
+        {props.common_name} {props.scientific_name}
       </div>
     </div>
   )
