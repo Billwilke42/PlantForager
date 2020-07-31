@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import Nav from './Nav/Nav'
 import CardContainer from './CardContainer/CardContainer'
 import PlantPage from './PlantPage/PlantPage'
-import { resetPlantInfo } from './actions'
+import { resetPlantInfo, setPlantPageId, resetPlantPageId } from './actions'
 import Search from './Search/Search'
 import { getPlants } from './thunks/getPlants'
 import { getPlantInfo } from './thunks/getPlantInfo'
@@ -15,7 +15,14 @@ import { connect } from 'react-redux'
 class App extends React.Component {
 
   handleClick = async (event) => {
-    await this.props.getPlantInfo(event.target.id)
+    const id = event.target.id
+    await this.props.setPlantPageId(id)
+    await this.props.getPlantInfo(id)
+  }
+
+  returnHome = () => {
+    this.props.resetPlantInfo()
+    this.props.resetPlantPageId()
   }
 
   componentDidMount() {
@@ -52,8 +59,11 @@ class App extends React.Component {
               const { id } = match.params
               return <PlantPage
                 plantInfo={this.props.plantInfo}
-              /> 
-            }}/>
+                returnHome={this.returnHome} /> 
+              }}> 
+            
+                {!this.props.plantPageId && <Redirect to='/'/>}
+              </Route>
         </Switch>
       </div>
     );
@@ -61,11 +71,11 @@ class App extends React.Component {
 }
 
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantId, setPlantInfo }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, setPlantInfo }) => ({
   isLoading: isLoading,
   error: hasErrored,
   plants: [].concat.apply([], setPlants),
-  plantId: setPlantId,
+  plantPageId: setPlantPageId,
   plantInfo: setPlantInfo
 })
 
@@ -78,7 +88,7 @@ App.propTypes = {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ getPlants, getPlantInfo }, dispatch)
+  bindActionCreators({ getPlants, getPlantInfo, resetPlantInfo, setPlantPageId, resetPlantPageId }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

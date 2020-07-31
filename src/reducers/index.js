@@ -4,11 +4,13 @@ import { hasErrored } from './hasErrored'
 import { setPlants } from './setPlants'
 import { setPlantInfo } from './setPlantInfo'
 import { setPlantPageId } from './setPlantPageId'
+import { setPlantPage } from './setPlantPage'
 
 export const rootReducer = combineReducers({
   isLoading,
   hasErrored,
   setPlants,
   setPlantInfo,
-  setPlantPageId
+  setPlantPageId,
+  setPlantPage,
 })

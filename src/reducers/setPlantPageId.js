@@ -1,7 +1,11 @@
-export const setPlantPageId = (state = false, action) => {
+const initialState = 0
+
+export const setPlantPageId = (state = initialState, action) => {
   switch (action.type) {
   case 'SET_PLANT_PAGE_ID':
-    return [...state, action.plantPageId]
+    return action.plantPageId
+  case 'RESET_PLANT_PAGE_ID':
+    return initialState
   default:
     return state
   }
