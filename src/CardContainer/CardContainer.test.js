@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 
 describe('CardContainer', () => {
-  const store = createStore(() => ({plants: [{
+  const store = createStore(() => ({isLoading: false, hasErrored: false, setPlants: [{
     "id": 111174,
     "common_name": "lawndaisy",
     "slug": "bellis-perennis",
@@ -37,8 +37,8 @@ describe('CardContainer', () => {
       </BrowserRouter>
 
     )
-    const commonName = await waitFor(() => getByText('lawndaisy'))
+    const name = await waitFor(() => getByText('lawndaisy Bellis perennis'))
     
-
+    expect(name).toBeInTheDocument()
   })
 })
