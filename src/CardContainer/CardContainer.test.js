@@ -36,7 +36,7 @@ describe('CardContainer', () => {
       </BrowserRouter>
 
     )
-    const name = await waitFor(() => getByText('lawndaisy Bellis perennis'))
+    const name = await waitFor(() => getByText('Bellis perennis', {exact: false}))
     
     expect(name).toBeInTheDocument()
   })

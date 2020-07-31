@@ -26,6 +26,11 @@ export const setPlantPage = bool => ({
   plantPage: bool
 })
 
+export const setFavoritesPage = bool => ({
+  type: 'SET_FAVORITES_PAGE',
+  favoritesPage: bool
+})
+
 export const hasErrored = message => ({
   type: 'HAS_ERRORED',
   message
