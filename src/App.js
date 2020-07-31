@@ -14,8 +14,8 @@ import { connect } from 'react-redux'
 
 class App extends React.Component {
 
-  addOrRemoveAFavorite = (plantInfo) => {
-    debugger
+  addOrRemoveAFavorite = (e, plantInfo) => {
+    e.preventDefault()
     const isFavorite = this.props.favorites.find(favorite => {
       if (favorite.id === plantInfo.id) {
         return true

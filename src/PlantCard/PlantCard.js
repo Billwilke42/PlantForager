@@ -22,7 +22,7 @@ const PlantCard = (props) => {
           <img alt='fave-icon' 
             src={isFavorite ? redHeartIcon : heartOutlineIcon} 
             className='fave-icon'
-            onClick={() => props.addOrRemoveAFavorite(props.plant)}
+            onClick={e => props.addOrRemoveAFavorite(e, props.plant)}
           />
         </div>
         <img 
