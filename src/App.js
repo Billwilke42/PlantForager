@@ -58,7 +58,6 @@ class App extends React.Component {
             render={({match}) => {
               const { id } = match.params
               return <PlantPage
-                plantInfo={this.props.plantInfo}
                 returnHome={this.returnHome} /> 
               }}> 
             

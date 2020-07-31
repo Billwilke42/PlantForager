@@ -8,14 +8,6 @@ const PlantPage = (props) => {
   if(props.isLoading) {
     return <p>Loading...</p>
   }
-  // if(props.plantInfo === {} && !props.plantPageId) {
-
-  //     return (
-  //       <Redirect to='/' />
-  //     )
-      
-    
-  // }
    if (!props.isLoading && props.plantInfo !== {} && props.plantPageId) { 
     return (
       <section className='plant-page'>
@@ -45,7 +37,7 @@ const mapStateToProps = ({ isLoading, hasErrored, setPlantPageId, setPlantInfo }
   isLoading: isLoading,
   error: hasErrored,
   plantPageId: setPlantPageId,
-  // plantInfo: setPlantInfo
+  plantInfo: setPlantInfo
 })
 
 
