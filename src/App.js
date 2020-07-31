@@ -1,33 +1,38 @@
 import React from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import Nav from './Nav/Nav'
 import CardContainer from './CardContainer/CardContainer'
-import { hasErrored, isLoading } from './actions'
+import PlantPage from './PlantPage/PlantPage'
+import { resetPlantInfo, setPlantPageId, resetPlantPageId } from './actions'
 import Search from './Search/Search'
 import { getPlants } from './thunks/getPlants'
+import { getPlantInfo } from './thunks/getPlantInfo'
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class App extends React.Component {
 
-  // removeNullPlants = () => {
-  //   debugger
-  //   if (this.props.plants.length > 0) {
-  //     const plantsCopy = []
-  //     this.props.plants.filter((plant, i) => {
-  //       if (plant.image_url !== null) {
-  //           plantsCopy.push(plant) 
-  //         }
-  //       })
-  //     this.props.setPlants(plantsCopy)
-  //   }
-  // }
+  handleClick = async (event) => {
+    const id = event.target.id
+    await this.props.setPlantPageId(id)
+    await this.props.getPlantInfo(id)
+  }
+
+  returnHome = () => {
+    this.props.resetPlantInfo()
+    this.props.resetPlantPageId()
+  }
 
   componentDidMount() {
-    this.props.getPlants()
-    // this.removeNullPlants()
+    this.props.getPlants(1)
+    // this.props.getPlants(2)
+    // this.props.getPlants(3)
+    // this.props.getPlants(4)
+    // this.props.getPlants(5)
+    // this.props.getPlants(6)
+    // this.props.getPlants(7)
   }
   
   render() {
@@ -36,7 +41,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/'>
             <Nav />
-            <CardContainer plants={this.props.plants} />
+            <CardContainer handleClick={this.handleClick} />
           </Route>
           <Route path='/search'>
             <div className='find-plants'>
@@ -48,6 +53,17 @@ class App extends React.Component {
             <Nav />
             <CardContainer />
           </Route>
+          <Route 
+            exact path='/plant/:id'
+            render={({match}) => {
+              const { id } = match.params
+              return <PlantPage
+                plantInfo={this.props.plantInfo}
+                returnHome={this.returnHome} /> 
+              }}> 
+            
+                {!this.props.plantPageId && <Redirect to='/'/>}
+              </Route>
         </Switch>
       </div>
     );
@@ -55,22 +71,24 @@ class App extends React.Component {
 }
 
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlants }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, setPlantInfo }) => ({
   isLoading: isLoading,
   error: hasErrored,
-  plants: setPlants
+  plants: [].concat.apply([], setPlants),
+  plantPageId: setPlantPageId,
+  plantInfo: setPlantInfo
 })
 
 
 
 App.propTypes = {
   isLoading: PropTypes.bool,
-  hasErrored: PropTypes.string
+  // hasErrored: PropTypes.string
 
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ hasErrored, getPlants }, dispatch)
+  bindActionCreators({ getPlants, getPlantInfo, resetPlantInfo, setPlantPageId, resetPlantPageId }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
