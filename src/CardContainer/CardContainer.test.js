@@ -4,7 +4,6 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import CardContainer from './CardContainer';
-import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 
