@@ -15,6 +15,7 @@ import { connect } from 'react-redux'
 class App extends React.Component {
 
   addOrRemoveAFavorite = (plantInfo) => {
+    debugger
     const isFavorite = this.props.favorites.find(favorite => {
       if (favorite.id === plantInfo.id) {
         return true
@@ -75,7 +76,10 @@ class App extends React.Component {
           </Route>
           <Route path='/favorites'>
             <Nav returnHome={this.returnHome}/>
-            <CardContainer />
+            <CardContainer 
+              handleClick={this.handleClick} 
+              addOrRemoveAFavorite={this.addOrRemoveAFavorite}
+            />
           </Route>
           <Route 
             exact path='/plant/:id'
@@ -100,7 +104,7 @@ const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, set
   plantPageId: setPlantPageId,
   plantInfo: setPlantInfo,
   favorites: setFavorites,
-  favoritesPage: setFavoritesPage
+  favoritesPage: setFavoritesPage,
 })
 
 

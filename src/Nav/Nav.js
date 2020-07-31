@@ -1,6 +1,8 @@
 import React from 'react';
 import './Nav.css'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { setFavoritesPage } from '../actions'
 
 const Nav = (props) => {
   return (
@@ -11,11 +13,15 @@ const Nav = (props) => {
           <button type='submit'>Search</button>
         </Link> */}
         <Link to='/favorites'>
-          <button type='submit' onClick={props.showFavorites}>Favorites</button>
+          <button type='submit' onClick={() => props.showFavorites()}>Favorites</button>
         </Link>
       </div>
     </header>
   )
 }
 
-export default Nav
+const mapStateToProps = ({ setFavoritesPage}) => ({
+  favoritesPage: setFavoritesPage
+})
+
+export default connect(mapStateToProps, null)(Nav);

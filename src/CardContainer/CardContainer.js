@@ -5,11 +5,28 @@ import { getPlants } from '../thunks/getPlants'
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { hasErrored } from '../actions'
+import { hasErrored, setFavoritesPage } from '../actions'
 import { getPlantInfo } from '../thunks/getPlantInfo'
 
 const CardContainer = (props) => {
+  if(props.favoritesPage) {
+    const favoritePlants = props.favorites.map(plant => (
+      <PlantCard 
+        plant = {plant}
+        key={plant.id}
+        id={plant.id}
+        handleClick={props.handleClick}
+        addOrRemoveAFavorite={props.addOrRemoveAFavorite}
+      />
+    ))
+    return (
+      <section className='card-container'>
+        {favoritePlants}
+      </section>
+    )
+  }
   if(props.plants.length > 0) {
+
     const plantsCopy = []
     const removeNullPlants = () => {
       if (props.plants.length > 0) {
@@ -20,7 +37,6 @@ const CardContainer = (props) => {
           })
       }
     }
-
     removeNullPlants()
     const displayCards = plantsCopy.map(plant => (
       <PlantCard 
@@ -44,10 +60,12 @@ const CardContainer = (props) => {
 }
 
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlants }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlants, setFavoritesPage, setFavorites }) => ({
   isLoading: isLoading,
   error: hasErrored,
   plants: [].concat.apply([], setPlants),
+  favorites: setFavorites,
+  favoritesPage: setFavoritesPage
 })
 
 const mapDispatchToProps = dispatch => (
