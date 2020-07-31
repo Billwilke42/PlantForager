@@ -26,6 +26,21 @@ export const setPlantPage = bool => ({
   plantPage: bool
 })
 
+export const setFavoritesPage = bool => ({
+  type: 'SET_FAVORITES_PAGE',
+  favoritesPage: bool
+})
+
+export const setFavorites = favorites => ({
+  type: 'SET_FAVORITES',
+  favorites
+})
+
+export const removeFavorites = favorites => ({
+  type: 'REMOVE_FAVORITES',
+  favorites
+})
+
 export const hasErrored = message => ({
   type: 'HAS_ERRORED',
   message
