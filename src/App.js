@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Nav from './Nav/Nav'
 import CardContainer from './CardContainer/CardContainer'
 import PlantPage from './PlantPage/PlantPage'
-import { resetPlantInfo, setPlantPageId, resetPlantPageId } from './actions'
+import { resetPlantInfo, setPlantPageId, resetPlantPageId, setFavoritesPage, setFavorites, removeFavorites } from './actions'
 import Search from './Search/Search'
 import { getPlants } from './thunks/getPlants'
 import { getPlantInfo } from './thunks/getPlantInfo'
@@ -13,6 +13,26 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class App extends React.Component {
+
+  addOrRemoveAFavorite = (plantInfo) => {
+    const isFavorite = this.props.favorites.find(favorite => {
+      if (favorite.id === plantInfo.id) {
+        return true
+      } else {
+        return false
+      }
+    })
+      if(isFavorite) {
+        this.props.removeFavorites(plantInfo)
+      } else {
+        this.props.setFavorites(plantInfo)
+      }
+  }
+
+  showFavorites = () => {
+    this.props.setFavoritesPage(true)
+  }
+ 
 
   handleClick = async (event) => {
     const id = event.target.id
@@ -23,6 +43,7 @@ class App extends React.Component {
   returnHome = () => {
     this.props.resetPlantInfo()
     this.props.resetPlantPageId()
+    this.props.setFavoritesPage(false)
   }
 
   componentDidMount() {
@@ -40,8 +61,11 @@ class App extends React.Component {
       <div className="App">
         <Switch>
           <Route exact path='/'>
-            <Nav />
-            <CardContainer handleClick={this.handleClick} />
+            <Nav showFavorites={this.showFavorites}/>
+            <CardContainer 
+              handleClick={this.handleClick} 
+              addOrRemoveAFavorite={this.addOrRemoveAFavorite}
+              />
           </Route>
           <Route path='/search'>
             <div className='find-plants'>
@@ -50,19 +74,18 @@ class App extends React.Component {
             </div>
           </Route>
           <Route path='/favorites'>
-            <Nav />
+            <Nav returnHome={this.returnHome}/>
             <CardContainer />
           </Route>
           <Route 
             exact path='/plant/:id'
             render={({match}) => {
               const { id } = match.params
-              return <PlantPage
-                returnHome={this.returnHome} /> 
-              }}> 
-            
+                return <PlantPage
+                  returnHome={this.returnHome} /> 
+                }}> 
                 {!this.props.plantPageId && <Redirect to='/'/>}
-              </Route>
+          </Route>
         </Switch>
       </div>
     );
@@ -70,12 +93,14 @@ class App extends React.Component {
 }
 
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, setPlantInfo }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, setPlantInfo, setFavorites, setFavoritesPage }) => ({
   isLoading: isLoading,
   error: hasErrored,
   plants: [].concat.apply([], setPlants),
   plantPageId: setPlantPageId,
-  plantInfo: setPlantInfo
+  plantInfo: setPlantInfo,
+  favorites: setFavorites,
+  favoritesPage: setFavoritesPage
 })
 
 
@@ -87,7 +112,7 @@ App.propTypes = {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ getPlants, getPlantInfo, resetPlantInfo, setPlantPageId, resetPlantPageId }, dispatch)
+  bindActionCreators({ getPlants, getPlantInfo, resetPlantInfo, setPlantPageId, resetPlantPageId, setFavoritesPage, setFavorites, removeFavorites }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

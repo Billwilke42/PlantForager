@@ -31,6 +31,16 @@ export const setFavoritesPage = bool => ({
   favoritesPage: bool
 })
 
+export const setFavorites = favorites => ({
+  type: 'SET_FAVORITES',
+  favorites
+})
+
+export const removeFavorites = favorites => ({
+  type: 'REMOVE_FAVORITES',
+  favorites
+})
+
 export const hasErrored = message => ({
   type: 'HAS_ERRORED',
   message

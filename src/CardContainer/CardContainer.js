@@ -23,10 +23,12 @@ const CardContainer = (props) => {
 
     removeNullPlants()
     const displayCards = plantsCopy.map(plant => (
-      <PlantCard {...plant}
+      <PlantCard 
+        plant = {plant}
         key={plant.id}
         id={plant.id}
         handleClick={props.handleClick}
+        addOrRemoveAFavorite={props.addOrRemoveAFavorite}
       />
     ))
 
