@@ -55,7 +55,7 @@ class Nav extends React.Component {
                 />
             </label>
           </form>
-          <form className='location-search'>
+          {/* <form className='location-search'>
             <select name='location' onChange={this.handleChange} data-testid='42' aria-label='Location drop down menu'>
                 <option>Select a Location...</option>
                 <option value='407'>Africa</option>
@@ -68,8 +68,8 @@ class Nav extends React.Component {
                 <option value='595'>North America</option>
                 <option value='674'>South America</option>
             </select>
-            <button type='submit' className='location-btn' onClick={e => this.props.findPlantsInLocation(e, this.state.location)}>Enter</button>
-          </form>
+            <button type='submit' className='location-btn' onClick={e => this.props.findPlantsInLocation(e, parseInt(this.state.location))}>Enter</button>
+          </form> */}
         <div className='button-section'>
           <Link to='/favorites'>
             <button type='submit' onClick={() => this.props.showFavorites()}>Favorites</button>

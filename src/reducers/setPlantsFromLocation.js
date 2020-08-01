@@ -20,7 +20,7 @@ const initialState = []
 
 export const setPlantsFromLocation = (state = initialState, action) => {
   switch (action.type) {
-  case 'SET_PLANTS_FROM_LOCATION)':
+  case 'SET_PLANTS_FROM_LOCATION':
     return [...this.state, action.plantsFromLocation]
   case 'RESET_PLANTS_FROM_LOCATION':
     return initialState
