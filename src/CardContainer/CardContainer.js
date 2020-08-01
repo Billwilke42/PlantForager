@@ -5,10 +5,11 @@ import { getPlants } from '../thunks/getPlants'
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { hasErrored, setFavoritesPage } from '../actions'
+import { hasErrored, setFavoritesPage, setPlantsFromLocation } from '../actions'
 import { getPlantInfo } from '../thunks/getPlantInfo'
 
 const CardContainer = (props) => {
+  // if(props.plantsFromLocation) 
   if(props.favoritesPage) {
     const favoritePlants = props.favorites.map(plant => (
       <PlantCard 
@@ -83,13 +84,14 @@ const CardContainer = (props) => {
 }
 
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlants, setFavoritesPage, setFavorites, setSearch }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlants, setFavoritesPage, setFavorites, setSearch, setPlantsFromLocation }) => ({
   isLoading: isLoading,
   error: hasErrored,
   plants: [].concat.apply([], setPlants),
   favorites: setFavorites,
   favoritesPage: setFavoritesPage,
-  search: setSearch
+  search: setSearch,
+  plantsFromLocation: setPlantsFromLocation
 })
 
 const mapDispatchToProps = dispatch => (

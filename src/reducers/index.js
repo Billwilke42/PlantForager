@@ -8,6 +8,7 @@ import { setPlantPage } from './setPlantPage'
 import { setFavoritesPage } from './setFavoritesPage'
 import { setFavorites } from './setFavorites'
 import { setSearch } from './setSearch'
+import { setPlantsFromLocation } from './setPlantsFromLocation'
 
 export const rootReducer = combineReducers({
   isLoading,
@@ -18,5 +19,6 @@ export const rootReducer = combineReducers({
   setPlantPage,
   setFavoritesPage,
   setFavorites,
-  setSearch
+  setSearch,
+  setPlantsFromLocation
 })
