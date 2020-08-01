@@ -2,7 +2,7 @@ import React from 'react';
 import './Nav.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { setFavoritesPage } from '../actions'
+import { setFavoritesPage, setPlantsFromLocation } from '../actions'
 
 class Nav extends React.Component {
   constructor(props) {
@@ -68,7 +68,7 @@ class Nav extends React.Component {
                 <option value='595'>North America</option>
                 <option value='674'>South America</option>
             </select>
-            <button type='submit' className='location-btn' onClick={e => this.props.findPlantsInLocation(e, parseInt(this.state.location))}>Enter</button>
+            <button type='submit' className='location-btn' onClick={e => this.props.findPlantsInLocation(e, this.state.location)}>Enter</button>
           </form>
         <div className='button-section'>
           <Link to='/favorites'>
@@ -80,8 +80,9 @@ class Nav extends React.Component {
   }
 }
 
-const mapStateToProps = ({ setFavoritesPage}) => ({
-  favoritesPage: setFavoritesPage
+const mapStateToProps = ({ setFavoritesPage, setPlantsFromLocation }) => ({
+  favoritesPage: setFavoritesPage,
+  plantsFromLocation: setPlantsFromLocation
 })
 
 export default connect(mapStateToProps, null)(Nav);

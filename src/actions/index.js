@@ -8,7 +8,7 @@ export const setPlantsFromLocation = plantsFromLocation => ({
   plantsFromLocation
 })
 
-export const resetPlantsFromLocation = plants => ({
+export const resetPlantsFromLocation = () => ({
   type: 'RESET_PLANTS_FROM_LOCATION',
 })
 
