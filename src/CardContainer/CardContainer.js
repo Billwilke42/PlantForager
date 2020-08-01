@@ -21,7 +21,7 @@ const CardContainer = (props) => {
       />
     ))
     return (
-      <section className='card-container'>
+      <section className='cards-container'>
         {favoritePlants}
       </section>
     )
@@ -56,7 +56,7 @@ const CardContainer = (props) => {
         />
       ))
       return (
-        <section className='card-container'>
+        <section className='cards-container'>
           {searchedPlantCards}
         </section>
       )
@@ -73,9 +73,13 @@ const CardContainer = (props) => {
     ))
 
     return (
-      <section className='card-container'>
+  
+
+      <section className='cards-container'>
         {displayCards}
       </section>
+
+
     )
   }
       return (

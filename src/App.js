@@ -100,6 +100,7 @@ class App extends React.Component {
               handleClick={this.handleClick} 
               addOrRemoveAFavorite={this.addOrRemoveAFavorite}
             />
+            {!this.props.plants && <Redirect to='/'/>}
           </Route>
           <Route 
             exact path='/plant/:id'

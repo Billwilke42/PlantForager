@@ -3,6 +3,9 @@ import './Nav.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setFavoritesPage, setPlantsFromLocation } from '../actions'
+import rose from './rose.png'
+import faveIcon from './fave-page-icon.svg'
+import homeIcon from './home-icon.svg'
 
 class Nav extends React.Component {
   constructor(props) {
@@ -29,10 +32,11 @@ class Nav extends React.Component {
     if(this.props.favoritesPage) {
       return (
         <header className='nav-container'>
-        <h1>Plant Forager</h1>
+        <h1 className='app-name'>Plant Forager</h1>
+        <img src={`${rose}`} className='rose' />
         <div className='button-section'>
           <Link to='/'>
-            <button type='submit' onClick={() => this.clearInput()}>Home</button>
+            <button type='submit' className='nav-button' onClick={() => this.clearInput()}><img className='home-icon' src={`${homeIcon}`}></img></button>
           </Link>
         </div>
       </header>
@@ -40,7 +44,11 @@ class Nav extends React.Component {
     }
     return (
       <header className='nav-container'>
+        <section className='title-section'>
+
+        <img src={`${rose}`} className='rose'/>
         <h1 className='app-name'>Plant Forager</h1>
+        </section>
           <form 
           className='search-form'
           onSubmit={this.props.search(this.state.searchInput)}>
@@ -72,7 +80,7 @@ class Nav extends React.Component {
           </form> */}
         <div className='button-section'>
           <Link to='/favorites'>
-            <button type='submit' onClick={() => this.props.showFavorites()}>Favorites</button>
+            <button type='submit' className='nav-button' onClick={() => this.props.showFavorites()}><img className='fave-page-icon' src={`${faveIcon}`}/></button>
           </Link>
         </div>
       </header>
