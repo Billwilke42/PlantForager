@@ -3,6 +3,15 @@ export const setPlants = plants => ({
   plants
 })
 
+export const setPlantsFromLocation = plantsFromLocation => ({
+  type: 'SET_PLANTS_FROM_LOCATION',
+  plantsFromLocation
+})
+
+export const resetPlantsFromLocation = () => ({
+  type: 'RESET_PLANTS_FROM_LOCATION',
+})
+
 export const setPlantInfo = plantInfo => ({
   type: 'SET_PLANT_INFO',
   plantInfo
@@ -34,6 +43,15 @@ export const setFavoritesPage = bool => ({
 export const setFavorites = favorites => ({
   type: 'SET_FAVORITES',
   favorites
+})
+
+export const setSearch = search => ({
+  type: 'SET_SEARCH',
+  search
+})
+
+export const resetSearch = search => ({
+  type: 'RESET_SEARCH',
 })
 
 export const removeFavorites = favorites => ({

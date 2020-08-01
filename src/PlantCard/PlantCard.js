@@ -36,8 +36,8 @@ const PlantCard = (props) => {
     
       </Link>
       <div className='card-bottom'>
-        {props.plant.common_name} 
-        {props.plant.scientific_name}
+        {props.plant.common_name}<br></br> 
+          <i>{props.plant.scientific_name}</i>
       </div>
     </div>
   )
