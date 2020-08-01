@@ -11,6 +11,12 @@ class Nav extends React.Component {
       searchInput: ''
     }
   }
+  clearInput() {
+    debugger
+    this.props.returnHome()
+    this.setState({searchInput: ''})
+
+  }
 
   handleChange = (e) => {
     e.preventDefault()
@@ -25,7 +31,7 @@ class Nav extends React.Component {
         <h1>Plant Forager</h1>
         <div className='button-section'>
           <Link to='/'>
-            <button type='submit' onClick={() => this.props.returnHome()}>Home</button>
+            <button type='submit' onClick={() => this.clearInput()}>Home</button>
           </Link>
         </div>
       </header>

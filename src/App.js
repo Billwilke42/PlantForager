@@ -22,7 +22,9 @@ import { connect } from 'react-redux'
 class App extends React.Component {
 
   search = (searchInputValue) => {
-    this.props.setSearch(searchInputValue)
+    setTimeout(() => {
+      this.props.setSearch(searchInputValue)
+    })
   }
 
   addOrRemoveAFavorite = (e, plantInfo) => {
@@ -53,10 +55,10 @@ class App extends React.Component {
   }
 
   returnHome = () => {
-    this.props.resetSearch()
     this.props.resetPlantInfo()
     this.props.resetPlantPageId()
     this.props.setFavoritesPage(false)
+    debugger
   }
 
   componentDidMount() {
