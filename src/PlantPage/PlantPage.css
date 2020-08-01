@@ -7,6 +7,14 @@
   flex-wrap: wrap;
 }
 
+.home-icon-plant-page {
+  margin-right: 5vw;
+  background-color: #92a65f;
+  border: 0;
+  border-radius: 33px;
+  color: #FFF;
+}
+
 .upper-section {
   display: flex;
   justify-content: space-evenly;
@@ -21,11 +29,23 @@
 .plant-pic-plant-page {
   max-width: 90%;
   max-height: 150%;
+  border: 6px solid #dcde9f;
+}
 
+.nav-button-plant-page {
+
+  margin-right: 5vw;
+  background-color: #183114;
+  border-radius: 33px;
+}
+
+.rtrn-home-i {
+  width: 50px;
+  padding: 3px;
 }
 
 .lower-images {
-  background-color: #92a65f;
+  background-color: #dcde9f;
   width: 100vw;
   height: 35%;
   overflow-x: scroll;

@@ -2,7 +2,10 @@
   margin: 2vh 2vw 2vh 2vw;
   background-color: #dcde9f;
   border-radius: 5px;
+  box-shadow: 4px 6px 16px;
 }
+
+
 
 .plant-pic {
   max-width: auto;
@@ -17,5 +20,6 @@
 
 .fave-icon {
   height: 2.3vh;
+  padding: 3px;
 }
 

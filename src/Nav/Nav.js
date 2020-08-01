@@ -32,8 +32,10 @@ class Nav extends React.Component {
     if(this.props.favoritesPage) {
       return (
         <header className='nav-container'>
-        <h1 className='app-name'>Plant Forager</h1>
-        <img src={`${rose}`} className='rose' />
+        <section className='title-section'>
+          <img src={`${rose}`} className='rose'/>
+          <h1 className='app-name'>Plant Forager</h1>
+        </section>
         <div className='button-section'>
           <Link to='/'>
             <button type='submit' className='nav-button' onClick={() => this.clearInput()}><img className='home-icon' src={`${homeIcon}`}></img></button>

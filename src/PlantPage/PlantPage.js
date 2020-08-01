@@ -18,7 +18,7 @@ const PlantPage = (props) => {
       <section className='plant-page'>
       
       <header className='return-home'>
-      <button type='submit' className='nav-button' onClick={() => props.returnHome()}><img className='home-icon' src={`${homeIcon}`}></img></button>
+      <button type='submit' className='nav-button-plant-page' onClick={() => props.returnHome()}><img className='rtrn-home-i' src={`${homeIcon}`}></img></button>
       </header>
         <section className='upper-section'>
           <img

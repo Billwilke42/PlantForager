@@ -66,7 +66,6 @@ class App extends React.Component {
     this.props.resetPlantInfo()
     this.props.resetPlantPageId()
     this.props.setFavoritesPage(false)
-    debugger
   }
 
   componentDidMount() {
