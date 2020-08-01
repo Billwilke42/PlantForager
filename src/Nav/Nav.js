@@ -40,7 +40,7 @@ class Nav extends React.Component {
     }
     return (
       <header className='nav-container'>
-        <h1>Plant Forager</h1>
+        <h1 className='app-name'>Plant Forager</h1>
           <form 
           className='search-form'
           onSubmit={this.props.search(this.state.searchInput)}>

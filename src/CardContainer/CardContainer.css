@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   overflow-y: auto;
   justify-content: space-around;
-
+  background-image: url('plantwallpaper.jpg');
   z-index: -1;
 
 }

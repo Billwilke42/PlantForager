@@ -17,6 +17,7 @@ export const getPlantsInLocation = (locationZone) => {
       }
       const data = await response.json()
       dispatch(isLoading(false))
+      console.log(data)
       dispatch(setPlantsFromLocation( data.data ))
     } catch (error) {
       dispatch(hasErrored(error.message))
