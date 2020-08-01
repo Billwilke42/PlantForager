@@ -4,8 +4,15 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Nav from './Nav/Nav'
 import CardContainer from './CardContainer/CardContainer'
 import PlantPage from './PlantPage/PlantPage'
-import { resetPlantInfo, setPlantPageId, resetPlantPageId, setFavoritesPage, setFavorites, removeFavorites } from './actions'
-import Search from './Search/Search'
+import { 
+  resetPlantInfo, 
+  setPlantPageId, 
+  resetPlantPageId, 
+  setFavoritesPage, 
+  setFavorites,
+  resetSearch,
+  setSearch, 
+  removeFavorites } from './actions'
 import { getPlants } from './thunks/getPlants'
 import { getPlantInfo } from './thunks/getPlantInfo'
 import PropTypes from 'prop-types';
@@ -13,6 +20,10 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class App extends React.Component {
+
+  search = (searchInputValue) => {
+    this.props.setSearch(searchInputValue)
+  }
 
   addOrRemoveAFavorite = (e, plantInfo) => {
     e.preventDefault()
@@ -42,6 +53,7 @@ class App extends React.Component {
   }
 
   returnHome = () => {
+    this.props.resetSearch()
     this.props.resetPlantInfo()
     this.props.resetPlantPageId()
     this.props.setFavoritesPage(false)
@@ -62,17 +74,14 @@ class App extends React.Component {
       <div className="App">
         <Switch>
           <Route exact path='/'>
-            <Nav showFavorites={this.showFavorites}/>
+            <Nav 
+              showFavorites={this.showFavorites}
+              search={this.search}
+            />
             <CardContainer 
               handleClick={this.handleClick} 
               addOrRemoveAFavorite={this.addOrRemoveAFavorite}
               />
-          </Route>
-          <Route path='/search'>
-            <div className='find-plants'>
-              <Search />
-              <CardContainer />
-            </div>
           </Route>
           <Route path='/favorites'>
             <Nav returnHome={this.returnHome}/>
@@ -97,7 +106,7 @@ class App extends React.Component {
 }
 
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, setPlantInfo, setFavorites, setFavoritesPage }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, setPlantInfo, setFavorites, setFavoritesPage, setSearch }) => ({
   isLoading: isLoading,
   error: hasErrored,
   plants: [].concat.apply([], setPlants),
@@ -105,6 +114,7 @@ const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, set
   plantInfo: setPlantInfo,
   favorites: setFavorites,
   favoritesPage: setFavoritesPage,
+  search: setSearch
 })
 
 
@@ -116,7 +126,7 @@ App.propTypes = {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ getPlants, getPlantInfo, resetPlantInfo, setPlantPageId, resetPlantPageId, setFavoritesPage, setFavorites, removeFavorites }, dispatch)
+  bindActionCreators({ getPlants, getPlantInfo, resetPlantInfo, setPlantPageId, resetPlantPageId, setFavoritesPage, setFavorites, removeFavorites, setSearch, resetSearch }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

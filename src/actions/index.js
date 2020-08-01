@@ -36,6 +36,15 @@ export const setFavorites = favorites => ({
   favorites
 })
 
+export const setSearch = search => ({
+  type: 'SET_SEARCH',
+  search
+})
+
+export const resetSearch = search => ({
+  type: 'RESET_SEARCH',
+})
+
 export const removeFavorites = favorites => ({
   type: 'REMOVE_FAVORITES',
   favorites
