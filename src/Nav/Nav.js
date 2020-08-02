@@ -3,6 +3,9 @@ import './Nav.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setFavoritesPage, setPlantsFromLocation } from '../actions'
+import berries from './berries.png'
+import faveIcon from './fave-page-icon.svg'
+import homeIcon from './home-icon.svg'
 
 class Nav extends React.Component {
   constructor(props) {
@@ -13,7 +16,7 @@ class Nav extends React.Component {
     }
   }
   clearInput() {
-    debugger
+  
     this.props.returnHome()
     this.setState({searchInput: ''})
 
@@ -29,10 +32,14 @@ class Nav extends React.Component {
     if(this.props.favoritesPage) {
       return (
         <header className='nav-container'>
-        <h1>Plant Forager</h1>
+        <section className='title-section'>
+          <img src={`${berries}`} className='berries'/>
+          <h1 className='app-name'>Plant Forager</h1>
+          <h4 className='app-explanation'>A Field Guide to Edible Plants Around the World</h4>
+        </section>
         <div className='button-section'>
           <Link to='/'>
-            <button type='submit' onClick={() => this.clearInput()}>Home</button>
+            <button type='submit' className='nav-button' onClick={() => this.clearInput()}><img className='home-icon' src={`${homeIcon}`}></img></button>
           </Link>
         </div>
       </header>
@@ -40,11 +47,19 @@ class Nav extends React.Component {
     }
     return (
       <header className='nav-container'>
+        <section className='title-section'>
+
+        <img src={`${berries}`} className='berries'/>
+        <div>
         <h1 className='app-name'>Plant Forager</h1>
+        <h4 className='app-explanation'>A Field Guide to Edible Plants Around the World</h4>
+        </div>
+        </section>
           <form 
           className='search-form'
           onSubmit={this.props.search(this.state.searchInput)}>
             <label className='search-input'>
+              
               <input
                 className='find'
                 type='text'
@@ -53,6 +68,8 @@ class Nav extends React.Component {
                 value={this.state.searchInput}
                 onChange={e => this.handleChange(e)}
                 />
+                <div className='search'></div>
+            
             </label>
           </form>
           {/* <form className='location-search'>
@@ -72,7 +89,7 @@ class Nav extends React.Component {
           </form> */}
         <div className='button-section'>
           <Link to='/favorites'>
-            <button type='submit' onClick={() => this.props.showFavorites()}>Favorites</button>
+            <button type='submit' className='nav-button' onClick={() => this.props.showFavorites()}><img className='fave-page-icon' src={`${faveIcon}`}/></button>
           </Link>
         </div>
       </header>

@@ -2,9 +2,12 @@
   margin: 2vh 2vw 2vh 2vw;
   background-color: #dcde9f;
   border-radius: 5px;
+  box-shadow: 4px 6px 16px;
 }
 
-img {
+
+
+.plant-pic {
   max-width: auto;
   max-height: 380px;
 }
@@ -17,5 +20,13 @@ img {
 
 .fave-icon {
   height: 2.3vh;
+  padding: 3px;
 }
 
+.card-bottom {
+  padding: 10px;
+}
+
+.card-bottom:first-letter {
+    text-transform:capitalize;
+}
