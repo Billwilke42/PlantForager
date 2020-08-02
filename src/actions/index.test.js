@@ -105,25 +105,25 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction)
   })
   
-  it('Should set the plant page id', () => {
-    const plantPageId = 1933210
+  it('Should set the plant page', () => {
+    const plantPage = true
 
     const expectedAction = {
-      type: "SET_PLANT_PAGE_ID",
-      plantPageId: 1933210
+      type: "SET_PLANT_PAGE",
+      plantPage: true
     }
 
-    const result = actions.setPlantPageId(plantPageId)
+    const result = actions.setPlantPage(plantPage)
 
     expect(result).toEqual(expectedAction)
   })
 
-  it('Should reset the plant Page Id', () => {
+  it('Should reset the plant Page', () => {
     const expectedAction = {
-      type: "RESET_PLANT_PAGE_ID"
+      type: "RESET_PLANT_PAGE"
     }
 
-    const result = actions.resetPlantPageId()
+    const result = actions.resetPlantPage()
 
     expect(result).toEqual(expectedAction)
   })

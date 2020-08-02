@@ -1,4 +1,4 @@
-import { setPlantPageId } from './setPlantPageId'
+import { setPlantPage } from './setPlantPage'
 
 describe('setPlantInfo reducer', () => {
   it('should return an initial state', () => {
@@ -10,8 +10,8 @@ describe('setPlantInfo reducer', () => {
   it('should reset state', () => {
     const expected = false
     
-    const result = setPlantPageId(undefined, {
-      type: "RESET_PLANT_PAGE_ID"
+    const result = setPlantPage(undefined, {
+      type: "RESET_PLANT_PAGE"
     })
 
     expect(result).toEqual(expected)

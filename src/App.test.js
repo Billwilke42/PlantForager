@@ -35,7 +35,7 @@ describe('App', () => {
             "duration": null
           }],
           setPlantInfo: {},
-          setPlantPageId: 0
+          setPlantPage: false,
         }, applyMiddleware(thunk))
 
     const { getByText } = render(
@@ -47,7 +47,7 @@ describe('App', () => {
     )
 
     const title = await waitFor(() => getByText('Plant Forager'))
-    const name = await waitFor(() => getByText('lawndaisy Bellis perennis'))
+    const name = await waitFor(() => getByText('lawndaisy', {exact: false}))
 
     expect(title).toBeInTheDocument()
   })
@@ -63,58 +63,60 @@ describe('App', () => {
     const plantCard = getByTestId('111174')
     
     fireEvent.click(plantCard)
-      console.log('1', store)
-    const loading = getByText('Loading...')
+    const loading = getByText('Loading')
+    expect(loading).toBeInTheDocument()
   })
 
-  // it('Should render a plantPage', async () => {
-  //   const { getByText, getByTestId } = render(
-  //     <BrowserRouter>
-  //       <Provider store={store}>
-  //         <App />
-  //       </Provider>
-  //     </BrowserRouter>
-  //   )
-  //   // const plantCard = getByTestId('111174')
+  it('Should render a plantPage', async () => {
+    const { getByText, debug, getByTestId } = render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </MemoryRouter>
+    )
+    const plantCard = getByTestId('111174')
     
-  //   // fireEvent.click(plantCard)
-
-  //   getPlantInfo.mockResolvedValue = {
-  //     "id": 111174,
-  //       "common_name": "lawndaisy",
-  //       "slug": "bellis-perennis",
-  //       "scientific_name": "perennis",
-  //       "year": 1753,
-  //       "bibliography": "Sp. Pl.: 886 (1753)",
-  //       "author": "L.",
-  //       "status": "accepted",
-  //       "rank": "species",
-  //       "family_common_name": "Aster family",
-  //       "genus_id": 780,
-  //       "observations": "Madeira, Europe to Medit. and C. Asia",
-  //       "image_url": "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
-  //       "genus": "Bellis",
-  //       "family": "Asteraceae",
-  //       "duration": null
-  //   }
-  //   store.setPlantInfo = {
-  //     "id": 111174,
-  //       "common_name": "lawndaisy",
-  //       "slug": "bellis-perennis",
-  //       "scientific_name": "perennis",
-  //       "year": 1753,
-  //       "bibliography": "Sp. Pl.: 886 (1753)",
-  //       "author": "L.",
-  //       "status": "accepted",
-  //       "rank": "species",
-  //       "family_common_name": "Aster family",
-  //       "genus_id": 780,
-  //       "observations": "Madeira, Europe to Medit. and C. Asia",
-  //       "image_url": "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
-  //       "genus": "Bellis",
-  //       "family": "Asteraceae",
-  //       "duration": null
-  //   }
+    fireEvent.click(plantCard)
+    
+    store = createStore(rootReducer, {isLoading: false, hasErrored: '', setPlantInfo: {
+        "id": 111174,
+          "common_name": "lawndaisy",
+          "slug": "bellis-perennis",
+          "scientific_name": "perennis",
+          "year": 1753,
+          "bibliography": "Sp. Pl.: 886 (1753)",
+          "author": "L.",
+          "status": "accepted",
+          "rank": "species",
+          "family_common_name": "Aster family",
+          "genus_id": 780,
+          "observations": "Madeira, Europe to Medit. and C. Asia",
+          "image_url": "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
+          "genus": "Bellis",
+          "family": "Asteraceae",
+          "duration": null
+    }})
+    // debug
+  })
+    // getPlantInfo.mockResolvedValue = {
+    //   "id": 111174,
+    //     "common_name": "lawndaisy",
+    //     "slug": "bellis-perennis",
+    //     "scientific_name": "perennis",
+    //     "year": 1753,
+    //     "bibliography": "Sp. Pl.: 886 (1753)",
+    //     "author": "L.",
+    //     "status": "accepted",
+    //     "rank": "species",
+    //     "family_common_name": "Aster family",
+    //     "genus_id": 780,
+    //     "observations": "Madeira, Europe to Medit. and C. Asia",
+    //     "image_url": "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
+    //     "genus": "Bellis",
+    //     "family": "Asteraceae",
+    //     "duration": null
+    // }
   //   store.setPlants = [{
   //     "id": 111174,
   //       "common_name": "lawndaisy",

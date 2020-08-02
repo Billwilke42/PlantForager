@@ -5,6 +5,14 @@ import homeIcon from '../Nav/home-icon.svg'
 import PropTypes from 'prop-types';
 
 const PlantPage = (props) => {
+  if (props.error) {
+    return (
+      <div className="App">
+        <p className='error-msg'>Error: {props.error}</p>
+      <p>Sorry! Try Reloading the Page</p>
+    </div>
+    )
+  }
   if (props.isLoading) {
     return <p className='animate'>Loading</p>
   }
@@ -27,7 +35,8 @@ const PlantPage = (props) => {
             className='nav-button-plant-page' 
             onClick={() => props.returnHome()}>
               <img 
-                className='rtrn-home-i' 
+                className='rtrn-home-i'
+                alt='return-home'
                 src={`${homeIcon}`}>
               </img>
           </button>
