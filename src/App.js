@@ -44,7 +44,7 @@ class App extends React.Component {
         return false
       }
     })
-      if(isFavorite) {
+      if (isFavorite) {
         this.props.removeFavorites(plantInfo)
       } else {
         this.props.setFavorites(plantInfo)
@@ -70,7 +70,7 @@ class App extends React.Component {
 
   pictureModal = (url) => {
     console.log(url)
-   if(url) {
+   if (url) {
      return (
       <img
       className='plant-pic-plant-page'
@@ -144,12 +144,27 @@ const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, set
   plantsFromLocation: setPlantsFromLocation
 })
 
-
-
 App.propTypes = {
   isLoading: PropTypes.bool,
-  // hasErrored: PropTypes.string
-
+  error: PropTypes.string,
+  favorites: PropTypes.array,
+  favoritesPage: PropTypes.bool,
+  getPlantInfo: PropTypes.func,
+  getPlants: PropTypes.func,
+  getPlantsInLocation: PropTypes.func,
+  plantInfo: PropTypes.object,
+  plantPageId: PropTypes.number,
+  plants: PropTypes.array,
+  plantsFromLocation: PropTypes.array,
+  removeFavorites: PropTypes.func,
+  resetPlantInfo: PropTypes.func,
+  resetPlantPageId: PropTypes.func,
+  resetSearch: PropTypes.func,
+  search: PropTypes.string,
+  setFavorites: PropTypes.func,
+  setFavoritesPage: PropTypes.func,
+  setPlantPageId: PropTypes.func,
+  setSearch: PropTypes.func
 }
 
 const mapDispatchToProps = dispatch => (

@@ -6,6 +6,7 @@ import { setFavoritesPage, setPlantsFromLocation } from '../actions'
 import berries from './berries.png'
 import faveIcon from './fave-page-icon.svg'
 import homeIcon from './home-icon.svg'
+import PropTypes from 'prop-types';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -16,10 +17,8 @@ class Nav extends React.Component {
     }
   }
   clearInput() {
-  
     this.props.returnHome()
     this.setState({searchInput: ''})
-
   }
 
   handleChange = (e) => {
@@ -95,6 +94,14 @@ class Nav extends React.Component {
       </header>
     )
   }
+}
+
+Nav.propTypes = {
+  favoritesPage: PropTypes.bool,
+  findPlantsInLocation: PropTypes.func,
+  plantsFromLocation: PropTypes.array,
+  search: PropTypes.func,
+  showFavorites: PropTypes.func
 }
 
 const mapStateToProps = ({ setFavoritesPage, setPlantsFromLocation }) => ({
