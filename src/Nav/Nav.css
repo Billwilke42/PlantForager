@@ -63,20 +63,20 @@ input[type=text] {
   transition: width 0.4s ease-in-out;
 }
 
+/* .rose {
+  display: none;
+} */
+.title-section-favorites {
+  margin-left: 0;
+  margin-left: -63vw;
+}
+
 input[type=text]:focus {
   width: 45%;
 }
 
 
 @media only screen and (max-width: 1100px) {
-  /* .rose {
-    display: none;
-  } */
-  /* .app-explanation {
-    font-size: 12px;
-    margin-top: -40px;
-  
-  } */
 
   .app-name {
     font-family: 'Red Rose', cursive;

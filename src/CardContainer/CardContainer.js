@@ -9,8 +9,7 @@ import { hasErrored, setFavoritesPage, setPlantsFromLocation } from '../actions'
 import { getPlantInfo } from '../thunks/getPlantInfo'
 
 const CardContainer = (props) => {
-  // if(props.plantsFromLocation) 
-  if(props.favoritesPage) {
+  if (props.favoritesPage) {
     const favoritePlants = props.favorites.map(plant => (
       <PlantCard 
         plant = {plant}
@@ -26,8 +25,7 @@ const CardContainer = (props) => {
       </section>
     )
   }
-  if(props.plants.length > 0) {
-
+  if (props.plants.length > 0) {
     const plantsCopy = []
     const removeNullPlants = () => {
       if (props.plants.length > 0) {
@@ -60,7 +58,6 @@ const CardContainer = (props) => {
           {searchedPlantCards}
         </section>
       )
-    
     }
     const displayCards = plantsCopy.map(plant => (
       <PlantCard 
@@ -73,20 +70,30 @@ const CardContainer = (props) => {
     ))
 
     return (
-  
-
       <section className='cards-container'>
         {displayCards}
       </section>
-
-
     )
   }
-      return (
-        <p className='animate'>Loading</p>
-      )
+  return (
+    <p className='animate'>Loading</p>
+  )
 }
 
+CardContainer.propTypes = {
+  addOrRemoveAFavorite: PropTypes.func,
+  error: PropTypes.string,
+  favorites: PropTypes.array,
+  favoritesPage: PropTypes.bool,
+  getPlantInfo: PropTypes.func,
+  getPlants: PropTypes.func,
+  handleClick: PropTypes.func,
+  hasErrored: PropTypes.func,
+  isLoading: PropTypes.bool,
+  plants: PropTypes.array,
+  plantsFromLocation: PropTypes.array,
+  search: PropTypes.string,
+}
 
 const mapStateToProps = ({ isLoading, hasErrored, setPlants, setFavoritesPage, setFavorites, setSearch, setPlantsFromLocation }) => ({
   isLoading: isLoading,

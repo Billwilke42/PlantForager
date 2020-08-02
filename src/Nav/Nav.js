@@ -32,8 +32,8 @@ class Nav extends React.Component {
     if(this.props.favoritesPage) {
       return (
         <header className='nav-container'>
-        <section className='title-section'>
           <img src={`${berries}`} className='berries'/>
+        <section className='title-section-favorites'>
           <h1 className='app-name'>Plant Forager</h1>
           <h4 className='app-explanation'>A Field Guide to Edible Plants Around the World</h4>
         </section>

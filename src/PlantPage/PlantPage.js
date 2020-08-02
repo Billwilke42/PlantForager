@@ -22,15 +22,24 @@ const PlantPage = (props) => {
     return (
       <section className='plant-page'>
       
-      <header className='return-home'>
-      <button type='submit' className='nav-button-plant-page' onClick={() => props.returnHome()}><img className='rtrn-home-i' src={`${homeIcon}`}></img></button>
-      </header>
+        <header className='return-home'>
+          <button 
+            type='submit' 
+            className='nav-button-plant-page' 
+            onClick={() => props.returnHome()}>
+              <img 
+                className='rtrn-home-i' 
+                src={`${homeIcon}`}>
+              </img>
+          </button>
+        </header>
         <section className='upper-section'>
          {picture}
           <div className='info'>
             <h2 className='common-name'>{props.plantInfo.common_name}</h2>
             <h4>{props.plantInfo.scientific_name}</h4>
-            <p className='info-tag'>Family Name: </p><p> {props.plantInfo.family_common_name}<span className='family'> {props.plantInfo.family}</span></p>
+            <p className='info-tag'>Family Name: </p>
+            <p> {props.plantInfo.family_common_name}<span className='family'> {props.plantInfo.family}</span></p>
             <p className='info-tag'>Locations:</p><p> {props.plantInfo.observations} </p>
             <p className='info-tag'>First Published:</p><p> {props.plantInfo.year}</p>
           </div>
