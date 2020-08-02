@@ -16,7 +16,7 @@ class Nav extends React.Component {
     }
   }
   clearInput() {
-    debugger
+  
     this.props.returnHome()
     this.setState({searchInput: ''})
 
@@ -35,6 +35,7 @@ class Nav extends React.Component {
         <section className='title-section'>
           <img src={`${rose}`} className='rose'/>
           <h1 className='app-name'>Plant Forager</h1>
+          <h4>A Field Guide to Edible Plants Around the World</h4>
         </section>
         <div className='button-section'>
           <Link to='/'>
@@ -49,12 +50,16 @@ class Nav extends React.Component {
         <section className='title-section'>
 
         <img src={`${rose}`} className='rose'/>
+        <div>
         <h1 className='app-name'>Plant Forager</h1>
+        <h4 className='app-explanation'>A Field Guide to Edible Plants Around the World</h4>
+        </div>
         </section>
           <form 
           className='search-form'
           onSubmit={this.props.search(this.state.searchInput)}>
             <label className='search-input'>
+              <div className='container'>
               <input
                 className='find'
                 type='text'
@@ -63,6 +68,8 @@ class Nav extends React.Component {
                 value={this.state.searchInput}
                 onChange={e => this.handleChange(e)}
                 />
+                <div className='search'></div>
+              </div>
             </label>
           </form>
           {/* <form className='location-search'>

@@ -29,9 +29,9 @@ const PlantPage = (props) => {
           <div className='info'>
             <h2 className='common-name'>{props.plantInfo.common_name}</h2>
             <h4>{props.plantInfo.scientific_name}</h4>
-            <p>Family Name: {props.plantInfo.family_common_name}<span>{props.plantInfo.family}</span></p>
-            <p>Locations: {props.plantInfo.observations} </p>
-            <p>First Published: {props.plantInfo.year}</p>
+            <p className='info-tag'>Family Name: </p><p> {props.plantInfo.family_common_name}<span className='family'> {props.plantInfo.family}</span></p>
+            <p className='info-tag'>Locations:</p><p> {props.plantInfo.observations} </p>
+            <p className='info-tag'>First Published:</p><p> {props.plantInfo.year}</p>
           </div>
         </section>
         <section className='lower-images'>

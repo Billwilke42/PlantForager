@@ -23,3 +23,10 @@
   padding: 3px;
 }
 
+.card-bottom {
+  padding: 10px;
+}
+
+.card-bottom:first-letter {
+    text-transform:capitalize;
+}

@@ -40,7 +40,7 @@ const CardContainer = (props) => {
     }
     removeNullPlants()
     if(props.search) {
-      debugger
+    
       const searchedPlants = plantsCopy.filter(plant => {
         if(plant.common_name.includes(props.search)) {
           return plant
