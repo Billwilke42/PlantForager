@@ -68,21 +68,6 @@ class App extends React.Component {
     this.props.setFavoritesPage(false)
   }
 
-  pictureModal = (url) => {
-    console.log(url)
-   if (url) {
-     return (
-      <img
-      className='plant-pic-plant-page'
-      src={url}
-      alt={this.props.plantInfo.common_name}
-      />
-     )
-   }
-  }
-  
-
-
   componentDidMount() {
     // this.props.getPlants(1)
     // this.props.getPlants(2)

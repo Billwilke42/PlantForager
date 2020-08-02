@@ -49,12 +49,10 @@ PlantCard.propTypes = {
   handleClick: PropTypes.func,
   id: PropTypes.number,
   plant: PropTypes.object,
-  plantInfo: PropTypes.object
 }
 
 const mapStateToProps = ({ setFavorites, setPlantInfo }) => ({
   favorites: setFavorites,
-  plantInfo: setPlantInfo
 })
 
 export default connect(mapStateToProps, null)(PlantCard);
