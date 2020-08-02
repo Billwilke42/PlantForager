@@ -17,9 +17,7 @@
 }
 
 .find {
-  /* margin-top: 3.1vh; */
   margin-left: 25vw;
-
   width: 40vw;
 }
 
@@ -63,12 +61,15 @@ input[type=text] {
   transition: width 0.4s ease-in-out;
 }
 
-/* .rose {
-  display: none;
-} */
-.title-section-favorites {
-  margin-left: 0;
-  margin-left: -63vw;
+.fave-page-icon-title {
+  width: 55px;
+}
+
+.favorites-title {
+  font-family: 'Red Rose', cursive;
+  font-size: 3vw;
+  margin-bottom: 2vh;
+  display: flex;
 }
 
 input[type=text]:focus {

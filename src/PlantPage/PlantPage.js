@@ -1,7 +1,6 @@
 import React from 'react'
 import './PlantPage.css'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import homeIcon from '../Nav/home-icon.svg'
 import PropTypes from 'prop-types';
 
@@ -9,7 +8,7 @@ const PlantPage = (props) => {
   if (props.isLoading) {
     return <p className='animate'>Loading</p>
   }
-  if (!props.isLoading && props.plantInfo !== {} && props.plantPageId) { 
+  if (!props.isLoading && props.plantInfo !== {} && props.plantsPage) { 
     let images;
     if (props.plantInfo.images) {
       images = [...props.plantInfo.images.bark, ...props.plantInfo.images.flower, ...props.plantInfo.images.fruit, ...props.plantInfo.images.habit, ...props.plantInfo.images.leaf,  ...props.plantInfo.images.other]
@@ -64,15 +63,16 @@ PlantPage.propTypes = {
   error: PropTypes.string,
   isLoading: PropTypes.bool,
   plantInfo: PropTypes.object,
-  plantPageId: PropTypes.number,
+  plantPage: PropTypes.bool,
   returnHome: PropTypes.func,
 }
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlantPageId, setPlantInfo }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlantPageId, setPlantInfo, setPlantPage }) => ({
   isLoading: isLoading,
   error: hasErrored,
   plantPageId: setPlantPageId,
-  plantInfo: setPlantInfo
+  plantInfo: setPlantInfo,
+  plantsPage: setPlantPage
 })
 
 export default connect(mapStateToProps, null)(PlantPage);

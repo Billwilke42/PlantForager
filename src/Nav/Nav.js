@@ -33,8 +33,7 @@ class Nav extends React.Component {
         <header className='nav-container'>
           <img src={`${berries}`} className='berries'/>
         <section className='title-section-favorites'>
-          <h1 className='app-name'>Plant Forager</h1>
-          <h4 className='app-explanation'>A Field Guide to Edible Plants Around the World</h4>
+          <h1 className='favorites-title'><img className='fave-page-icon-title' src={`${faveIcon}`}/>Favorites:</h1>
         </section>
         <div className='button-section'>
           <Link to='/'>
@@ -47,7 +46,6 @@ class Nav extends React.Component {
     return (
       <header className='nav-container'>
         <section className='title-section'>
-
         <img src={`${berries}`} className='berries'/>
         <div>
         <h1 className='app-name'>Plant Forager</h1>
@@ -55,8 +53,8 @@ class Nav extends React.Component {
         </div>
         </section>
           <form 
-          className='search-form'
-          onSubmit={this.props.search(this.state.searchInput)}>
+          className={'search-form'}
+          onSubmit={this.props.search ? this.props.search(this.state.searchInput) : null}>
             <label className='search-input'>
               
               <input

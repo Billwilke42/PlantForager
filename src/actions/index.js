@@ -26,8 +26,8 @@ export const setPlantPageId = plantPageId => ({
   plantPageId
 })
 
-export const resetPlantPageId = () => ({
-  type: 'RESET_PLANT_PAGE_ID',
+export const resetPlantPage = () => ({
+  type: 'RESET_PLANT_PAGE',
 })
 
 export const setPlantPage = bool => ({
