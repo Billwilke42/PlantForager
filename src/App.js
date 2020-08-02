@@ -68,26 +68,28 @@ class App extends React.Component {
     this.props.setFavoritesPage(false)
   }
 
-  pictureModal = (e) => {
-    console.log(e)
-    console.log(e.target.value)
-    e.preventDefault()
-    return (
-      <section className='picture-modal'>
-        <header><button type='submit'></button></header>
-        <img src={`${e.target.value}`}></img>
-      </section>
-    )
+  pictureModal = (url) => {
+    console.log(url)
+   if(url) {
+     return (
+      <img
+      className='plant-pic-plant-page'
+      src={url}
+      alt={this.props.plantInfo.common_name}
+      />
+     )
+   }
   }
+  
+
 
   componentDidMount() {
-    this.props.getPlants(1)
-    this.props.getPlants(2)
-    this.props.getPlants(3)
-    this.props.getPlants(4)
-    this.props.getPlants(5)
+    // this.props.getPlants(1)
+    // this.props.getPlants(2)
+    // this.props.getPlants(3)
+    // this.props.getPlants(4)
+    // this.props.getPlants(5)
     this.props.getPlants(6)
-    this.props.getPlants(7)
   }
   
   render() {

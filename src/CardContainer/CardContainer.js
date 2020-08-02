@@ -83,7 +83,7 @@ const CardContainer = (props) => {
     )
   }
       return (
-        <p>Loading</p>
+        <p className='animate'>Loading</p>
       )
 }
 

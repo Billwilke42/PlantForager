@@ -99,12 +99,13 @@ h4 {
 
 .tiny-pics {
   height: 80%;
-  margin: 2vw;
+  /* margin: 2vw; */
+  margin-right: 4vw;
   float: right;
   box-shadow: 9px 2px 16px;
   z-index: 1 
 }
-
+/* 
 .tiny-pics:hover {
   position:relative;
   top:-25px;
@@ -113,18 +114,15 @@ h4 {
   height:auto;
   display:block;
   z-index: 1;
-}
+} */
 
-.picture-modal {
-  height: 80vh;
-  width: 80vw;
-  z-index: 999;
+.tiny-pics:hover,
+.tiny-pics:focus {
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: transform .3s;
+  opacity: .98;
 }
-
-.lil-pic {
-  overflow-y: visible
-}
-
 
 @media only screen and (max-width: 1100px) {
 .berries {
