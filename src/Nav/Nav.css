@@ -1,6 +1,6 @@
 .nav-container {
   box-shadow: 9px 2px 16px;
-  height: 15vh;
+  height: 120px;
   display: flex;
   justify-content: space-between;
   position: sticky; 

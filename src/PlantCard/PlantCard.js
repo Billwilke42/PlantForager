@@ -51,7 +51,7 @@ PlantCard.propTypes = {
   plant: PropTypes.object,
 }
 
-const mapStateToProps = ({ setFavorites, setPlantInfo }) => ({
+const mapStateToProps = ({ setFavorites }) => ({
   favorites: setFavorites,
 })
 

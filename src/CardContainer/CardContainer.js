@@ -5,7 +5,7 @@ import { getPlants } from '../thunks/getPlants'
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { hasErrored, setFavoritesPage, setPlantsFromLocation } from '../actions'
+import { hasErrored } from '../actions'
 import { getPlantInfo } from '../thunks/getPlantInfo'
 
 const CardContainer = (props) => {
