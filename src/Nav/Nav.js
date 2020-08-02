@@ -37,7 +37,7 @@ class Nav extends React.Component {
         </section>
         <div className='button-section'>
           <Link to='/'>
-            <button type='submit' className='nav-button' onClick={() => this.clearInput()}><img className='home-icon' src={`${homeIcon}`}></img></button>
+            <button type='submit' className='nav-button' onClick={() => this.clearInput()}><img className='home-icon' alt='home-icon' src={`${homeIcon}`}></img></button>
           </Link>
         </div>
       </header>
@@ -46,17 +46,16 @@ class Nav extends React.Component {
     return (
       <header className='nav-container'>
         <section className='title-section'>
-        <img src={`${berries}`} className='berries'/>
-        <div>
-        <h1 className='app-name'>Plant Forager</h1>
-        <h4 className='app-explanation'>A Field Guide to Edible Plants Around the World</h4>
-        </div>
+          <img src={`${berries}`} alt='berries' className='berries'/>
+          <div>
+            <h1 className='app-name'>Plant Forager</h1>
+            <h4 className='app-explanation'>A Field Guide to Edible Plants Around the World</h4>
+          </div>
         </section>
           <form 
-          className={'search-form'}
-          onSubmit={this.props.search ? this.props.search(this.state.searchInput) : null}>
+            className={'search-form'}
+            onSubmit={this.props.search ? this.props.search(this.state.searchInput) : null}>
             <label className='search-input'>
-              
               <input
                 className='find'
                 type='text'
@@ -64,9 +63,7 @@ class Nav extends React.Component {
                 placeholder='Search by Common Name'
                 value={this.state.searchInput}
                 onChange={e => this.handleChange(e)}
-                />
-                <div className='search'></div>
-            
+              />
             </label>
           </form>
           {/* <form className='location-search'>
@@ -86,7 +83,7 @@ class Nav extends React.Component {
           </form> */}
         <div className='button-section'>
           <Link to='/favorites'>
-            <button type='submit' className='nav-button' onClick={() => this.props.showFavorites()}><img className='fave-page-icon' src={`${faveIcon}`}/></button>
+            <button type='submit' className='nav-button' onClick={() => this.props.showFavorites()}><img className='fave-page-icon' alt='fave-page-icon' src={`${faveIcon}`}/></button>
           </Link>
         </div>
       </header>

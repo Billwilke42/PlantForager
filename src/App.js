@@ -30,7 +30,6 @@ class App extends React.Component {
   }
 
   search = (searchInputValue) => {
-
     setTimeout(() => {
       this.props.setSearch(searchInputValue)
     })

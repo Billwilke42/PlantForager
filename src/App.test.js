@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import App from './App';
