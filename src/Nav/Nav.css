@@ -13,19 +13,19 @@
 .app-name {
   font-family: 'Red Rose', cursive;
   font-size: 3vw;
+  margin-bottom: 0
 }
 
 .find {
-  margin-top: 3.1vh;
+  /* margin-top: 3.1vh; */
   margin-left: 25vw;
 
   width: 40vw;
 }
 
-.rose {
-  height: 133px;
-  background: transparent;
-  margin-left: 2vw;
+.berries{
+  height: 120px;
+  margin-top: 5px;
 }
 
 .title-section {
@@ -48,17 +48,6 @@
   border-radius: 33px;
 }
 
-.container {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 300px;
-  height: 100px;
-}
-
 input[type=text] {
   width: 118px;
   box-sizing: border-box;
@@ -75,7 +64,7 @@ input[type=text] {
 }
 
 input[type=text]:focus {
-  width: 85%;
+  width: 45%;
 }
 
 
@@ -91,25 +80,27 @@ input[type=text]:focus {
 
   .app-name {
     font-family: 'Red Rose', cursive;
-    font-size: 5vw;
-    margin-left: 3vw;
+    font-size: 4vw;
+    margin-left: 2vw;
   }
 
-  input[type=text]:focus {
-    width: 65%;
-  }
   
-  }
+}
 
-  @media only screen and (max-width: 450px) {
+@media only screen and (max-width: 450px) {
     .app-name {
       font-family: 'Red Rose', cursive;
       font-size: 7vw;
-      margin-left: 100px;
-      margin-top: -58px;
+      
     }
     .find {
-      margin-left: -150px;
-      margin-top: 35px;
+      margin-left: 0;
+      margin-right: 5px;
+    }
+    input[type=text]:focus {
+      width: 75%;
     }
   }
+
+
+  

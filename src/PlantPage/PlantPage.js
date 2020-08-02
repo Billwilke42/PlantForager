@@ -14,6 +14,16 @@ const PlantPage = (props) => {
     if(props.plantInfo.images) {
       images = [...props.plantInfo.images.bark, ...props.plantInfo.images.flower, ...props.plantInfo.images.fruit, ...props.plantInfo.images.habit, ...props.plantInfo.images.leaf,  ...props.plantInfo.images.other]
     }
+    const pictureModal = (e) => {
+      console.log(e)
+      console.log(e.target.value)
+      return (
+        <section className='picture-modal'>
+          <header><button type='submit'></button></header>
+          <img src={`${e.target.value}`}></img>
+        </section>
+      )
+    }
     return (
       <section className='plant-page'>
       
@@ -36,7 +46,11 @@ const PlantPage = (props) => {
         </section>
         <section className='lower-images'>
           {images && images.map(image => {
-            return <img src={image.image_url} className='tiny-pics' key={image.id} id={image.id}/>
+            return (
+          
+
+                <img src={image.image_url} className='lil-pic' value={image.image_url} onClick={e => props.pictureModal(e) } className='tiny-pics' key={image.id} id={image.id}/>
+            )
           })}
         </section>
       </section>

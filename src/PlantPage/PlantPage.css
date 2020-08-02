@@ -5,6 +5,7 @@
   justify-content: center;
   /* align-items: center; */
   flex-wrap: wrap;
+  z-index: -1;
 }
 
 .home-icon-plant-page {
@@ -52,6 +53,7 @@
   width: 100vw;
   height: 35%;
   overflow-x: scroll;
+  overflow-y: hidden;
   display: flex;
   align-items: center;
 }
@@ -72,7 +74,7 @@
 
 .app-explanation {
   font-size: 12px;
-  margin-top: -40px;
+  margin-top: 0
 
 }
 
@@ -100,11 +102,32 @@ h4 {
   margin: 2vw;
   float: right;
   box-shadow: 9px 2px 16px;
+  z-index: 1 
+}
+
+.tiny-pics:hover {
+  position:relative;
+  top:-25px;
+  left:-35px;
+  width:500px;
+  height:auto;
+  display:block;
+  z-index: 1;
+}
+
+.picture-modal {
+  height: 80vh;
+  width: 80vw;
+  z-index: 999;
+}
+
+.lil-pic {
+  overflow-y: visible
 }
 
 
 @media only screen and (max-width: 1100px) {
-.rose {
+.berries {
   display: none;
 }
 .app-explanation {

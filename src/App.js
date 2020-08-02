@@ -68,14 +68,26 @@ class App extends React.Component {
     this.props.setFavoritesPage(false)
   }
 
+  pictureModal = (e) => {
+    console.log(e)
+    console.log(e.target.value)
+    e.preventDefault()
+    return (
+      <section className='picture-modal'>
+        <header><button type='submit'></button></header>
+        <img src={`${e.target.value}`}></img>
+      </section>
+    )
+  }
+
   componentDidMount() {
     this.props.getPlants(1)
-    // this.props.getPlants(2)
-    // this.props.getPlants(3)
-    // this.props.getPlants(4)
-    // this.props.getPlants(5)
-    // this.props.getPlants(6)
-    // this.props.getPlants(7)
+    this.props.getPlants(2)
+    this.props.getPlants(3)
+    this.props.getPlants(4)
+    this.props.getPlants(5)
+    this.props.getPlants(6)
+    this.props.getPlants(7)
   }
   
   render() {
@@ -106,6 +118,7 @@ class App extends React.Component {
             render={({match}) => {
               const { id } = match.params
                 return <PlantPage
+                  pictureModal={this.pictureModal}
                   returnHome={this.returnHome} /> 
                 }}> 
                 {!this.props.plantPageId && <Redirect to='/'/>}
