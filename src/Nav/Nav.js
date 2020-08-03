@@ -2,24 +2,22 @@ import React from 'react';
 import './Nav.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { setFavoritesPage, setPlantsFromLocation } from '../actions'
+// import { setFavoritesPage, setPlantsFromLocation } from '../actions'
 import berries from './berries.png'
 import faveIcon from './fave-page-icon.svg'
 import homeIcon from './home-icon.svg'
+import PropTypes from 'prop-types';
 
 class Nav extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       searchInput: '',
-      location: ''
     }
   }
   clearInput() {
-  
     this.props.returnHome()
     this.setState({searchInput: ''})
-
   }
 
   handleChange = (e) => {
@@ -32,14 +30,13 @@ class Nav extends React.Component {
     if(this.props.favoritesPage) {
       return (
         <header className='nav-container'>
-        <section className='title-section'>
           <img src={`${berries}`} className='berries'/>
-          <h1 className='app-name'>Plant Forager</h1>
-          <h4 className='app-explanation'>A Field Guide to Edible Plants Around the World</h4>
+        <section className='title-section-favorites'>
+          <h1 className='favorites-title'><img className='fave-page-icon-title' src={`${faveIcon}`}/>Favorites:</h1>
         </section>
         <div className='button-section'>
           <Link to='/'>
-            <button type='submit' className='nav-button' onClick={() => this.clearInput()}><img className='home-icon' src={`${homeIcon}`}></img></button>
+            <button type='submit' className='nav-button' onClick={() => this.clearInput()}><img className='home-icon' alt='home-icon' src={`${homeIcon}`}></img></button>
           </Link>
         </div>
       </header>
@@ -48,18 +45,16 @@ class Nav extends React.Component {
     return (
       <header className='nav-container'>
         <section className='title-section'>
-
-        <img src={`${berries}`} className='berries'/>
-        <div>
-        <h1 className='app-name'>Plant Forager</h1>
-        <h4 className='app-explanation'>A Field Guide to Edible Plants Around the World</h4>
-        </div>
+          <img src={`${berries}`} alt='berries' className='berries'/>
+          <div>
+            <h1 className='app-name'>Plant Forager</h1>
+            <h4 className='app-explanation'>A Field Guide to Edible Plants Around the World</h4>
+          </div>
         </section>
           <form 
-          className='search-form'
-          onSubmit={this.props.search(this.state.searchInput)}>
+            className={'search-form'}
+            onSubmit={this.props.search ? this.props.search(this.state.searchInput) : null}>
             <label className='search-input'>
-              
               <input
                 className='find'
                 type='text'
@@ -67,9 +62,7 @@ class Nav extends React.Component {
                 placeholder='Search by Common Name'
                 value={this.state.searchInput}
                 onChange={e => this.handleChange(e)}
-                />
-                <div className='search'></div>
-            
+              />
             </label>
           </form>
           {/* <form className='location-search'>
@@ -89,12 +82,20 @@ class Nav extends React.Component {
           </form> */}
         <div className='button-section'>
           <Link to='/favorites'>
-            <button type='submit' className='nav-button' onClick={() => this.props.showFavorites()}><img className='fave-page-icon' src={`${faveIcon}`}/></button>
+            <button type='submit' className='nav-button' onClick={() => this.props.showFavorites()}><img className='fave-page-icon' alt='fave-page-icon' src={`${faveIcon}`}/></button>
           </Link>
         </div>
       </header>
     )
   }
+}
+
+Nav.propTypes = {
+  favoritesPage: PropTypes.bool,
+  findPlantsInLocation: PropTypes.func,
+  plantsFromLocation: PropTypes.array,
+  search: PropTypes.func,
+  showFavorites: PropTypes.func
 }
 
 const mapStateToProps = ({ setFavoritesPage, setPlantsFromLocation }) => ({

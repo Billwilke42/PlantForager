@@ -1,6 +1,6 @@
 .nav-container {
   box-shadow: 9px 2px 16px;
-  height: 15vh;
+  height: 120px;
   display: flex;
   justify-content: space-between;
   position: sticky; 
@@ -17,9 +17,7 @@
 }
 
 .find {
-  /* margin-top: 3.1vh; */
   margin-left: 25vw;
-
   width: 40vw;
 }
 
@@ -63,20 +61,23 @@ input[type=text] {
   transition: width 0.4s ease-in-out;
 }
 
+.fave-page-icon-title {
+  width: 55px;
+}
+
+.favorites-title {
+  font-family: 'Red Rose', cursive;
+  font-size: 3vw;
+  margin-bottom: 2vh;
+  display: flex;
+}
+
 input[type=text]:focus {
   width: 45%;
 }
 
 
 @media only screen and (max-width: 1100px) {
-  /* .rose {
-    display: none;
-  } */
-  /* .app-explanation {
-    font-size: 12px;
-    margin-top: -40px;
-  
-  } */
 
   .app-name {
     font-family: 'Red Rose', cursive;

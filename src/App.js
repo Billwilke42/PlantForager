@@ -8,8 +8,8 @@ import {
   setPlantsFromLocation,
   resetPlantsFromLocation,
   resetPlantInfo, 
-  setPlantPageId, 
-  resetPlantPageId, 
+  setPlantPage, 
+  resetPlantPage, 
   setFavoritesPage, 
   setFavorites,
   resetSearch,
@@ -44,7 +44,7 @@ class App extends React.Component {
         return false
       }
     })
-      if(isFavorite) {
+      if (isFavorite) {
         this.props.removeFavorites(plantInfo)
       } else {
         this.props.setFavorites(plantInfo)
@@ -58,39 +58,35 @@ class App extends React.Component {
 
   handleClick = async (event) => {
     const id = event.target.id
-    await this.props.setPlantPageId(id)
+    await this.props.setPlantPage(true)
     await this.props.getPlantInfo(id)
   }
 
   returnHome = () => {
     this.props.resetPlantInfo()
-    this.props.resetPlantPageId()
+    this.props.resetPlantPage(false)
     this.props.setFavoritesPage(false)
   }
 
-  pictureModal = (e) => {
-    console.log(e)
-    console.log(e.target.value)
-    e.preventDefault()
-    return (
-      <section className='picture-modal'>
-        <header><button type='submit'></button></header>
-        <img src={`${e.target.value}`}></img>
-      </section>
-    )
-  }
-
   componentDidMount() {
-    this.props.getPlants(1)
+    // this.props.getPlants(1)
     this.props.getPlants(2)
-    this.props.getPlants(3)
-    this.props.getPlants(4)
-    this.props.getPlants(5)
-    this.props.getPlants(6)
-    this.props.getPlants(7)
+    // this.props.getPlants(3)
+    // this.props.getPlants(4)
+    // this.props.getPlants(5)
+    // this.props.getPlants(6)
   }
   
   render() {
+    if (this.props.error) {
+      return (
+        <div className="App">
+          <p className='error-msg'>Error: {this.props.error}</p>
+          <p className='error-msg'>Sorry! Try Reloading the Page</p>
+        </div>
+      )
+
+    }
     return (
       <div className="App">
         <Switch>
@@ -111,17 +107,16 @@ class App extends React.Component {
               handleClick={this.handleClick} 
               addOrRemoveAFavorite={this.addOrRemoveAFavorite}
             />
-            {!this.props.plants && <Redirect to='/'/>}
+           {!this.props.favoritesPage && <Redirect to='/'/>}
           </Route>
           <Route 
             exact path='/plant/:id'
             render={({match}) => {
               const { id } = match.params
                 return <PlantPage
-                  pictureModal={this.pictureModal}
                   returnHome={this.returnHome} /> 
                 }}> 
-                {!this.props.plantPageId && <Redirect to='/'/>}
+                {!this.props.plantsPage && <Redirect to='/'/>}
           </Route>
         </Switch>
       </div>
@@ -130,7 +125,7 @@ class App extends React.Component {
 }
 
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, setPlantInfo, setFavorites, setFavoritesPage, setSearch, setPlantsFromLocation }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, setPlantInfo, setFavorites, setFavoritesPage, setSearch, setPlantsFromLocation, setPlantPage }) => ({
   isLoading: isLoading,
   error: hasErrored,
   plants: [].concat.apply([], setPlants),
@@ -139,19 +134,34 @@ const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, set
   favorites: setFavorites,
   favoritesPage: setFavoritesPage,
   search: setSearch,
-  plantsFromLocation: setPlantsFromLocation
+  plantsFromLocation: setPlantsFromLocation,
+  plantsPage: setPlantPage
 })
-
-
 
 App.propTypes = {
   isLoading: PropTypes.bool,
-  // hasErrored: PropTypes.string
-
+  error: PropTypes.string,
+  favorites: PropTypes.array,
+  favoritesPage: PropTypes.bool,
+  getPlantInfo: PropTypes.func,
+  getPlants: PropTypes.func,
+  getPlantsInLocation: PropTypes.func,
+  plantInfo: PropTypes.object,
+  plants: PropTypes.array,
+  plantsFromLocation: PropTypes.array,
+  removeFavorites: PropTypes.func,
+  resetPlantInfo: PropTypes.func,
+  resetPlantPageId: PropTypes.func,
+  resetSearch: PropTypes.func,
+  search: PropTypes.string,
+  setFavorites: PropTypes.func,
+  setFavoritesPage: PropTypes.func,
+  setPlantPage: PropTypes.func,
+  setSearch: PropTypes.func
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ getPlants, getPlantInfo, resetPlantInfo, setPlantPageId, resetPlantPageId, setFavoritesPage, setFavorites, removeFavorites, setSearch, resetSearch, getPlantsInLocation }, dispatch)
+  bindActionCreators({ getPlants, getPlantInfo, resetPlantInfo, resetPlantPage, setPlantPage, setFavoritesPage, setFavorites, removeFavorites, setSearch, resetSearch, getPlantsInLocation }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

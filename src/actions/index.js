@@ -21,13 +21,8 @@ export const resetPlantInfo = () => ({
   type: 'RESET_PLANT_INFO'
 })
 
-export const setPlantPageId = plantPageId => ({
-  type: 'SET_PLANT_PAGE_ID',
-  plantPageId
-})
-
-export const resetPlantPageId = () => ({
-  type: 'RESET_PLANT_PAGE_ID',
+export const resetPlantPage = () => ({
+  type: 'RESET_PLANT_PAGE',
 })
 
 export const setPlantPage = bool => ({
@@ -40,6 +35,10 @@ export const setFavoritesPage = bool => ({
   favoritesPage: bool
 })
 
+export const resetFavoritesPage = () => ({
+  type: 'RESET_FAVORITES_PAGE',
+})
+
 export const setFavorites = favorites => ({
   type: 'SET_FAVORITES',
   favorites
@@ -50,7 +49,7 @@ export const setSearch = search => ({
   search
 })
 
-export const resetSearch = search => ({
+export const resetSearch = () => ({
   type: 'RESET_SEARCH',
 })
 

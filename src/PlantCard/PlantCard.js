@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { setFavorites, setPlantInfo } from '../actions'
 import heartOutlineIcon from './heart-outline.png'
 import redHeartIcon from './heart-red.png'
+import PropTypes from 'prop-types';
 
 const PlantCard = (props) => {
   const isFavorite = props.favorites.find(favorite => {
@@ -26,26 +27,32 @@ const PlantCard = (props) => {
           />
         </div>
         <img 
-        className='plant-pic'
-        id={props.plant.id}
-        data-testid={props.plant.id}
-        src={props.plant.image_url}
-        alt={`${props.plant.common_name}`}
-        onClick={e => props.handleClick(e)}
+          className='plant-pic'
+          id={props.plant.id}
+          data-testid={props.plant.id}
+          src={props.plant.image_url}
+          alt={`${props.plant.common_name}`}
+          onClick={e => props.handleClick(e)}
         />
-    
       </Link>
       <div className='card-bottom'>
         {props.plant.common_name}<br></br> 
-          <i>{props.plant.scientific_name}</i>
+        <i>{props.plant.scientific_name}</i>
       </div>
     </div>
   )
 }
 
-const mapStateToProps = ({ setFavorites, setPlantInfo }) => ({
-  favorites: setFavorites,
-  plantInfo: setPlantInfo
+PlantCard.propTypes = {
+  addOrRemoveAFavorite: PropTypes.func,
+  favorites: PropTypes.array,
+  handleClick: PropTypes.func,
+  id: PropTypes.number,
+  plant: PropTypes.object,
+}
+
+const mapStateToProps = ({ setFavorites }) => ({
+  favorites: setFavorites
 })
 
 export default connect(mapStateToProps, null)(PlantCard);

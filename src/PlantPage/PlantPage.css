@@ -3,7 +3,6 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   flex-wrap: wrap;
   z-index: -1;
 }
@@ -17,7 +16,7 @@
 }
 
 .upper-section {
-  display: flex;
+  display: inline-flex;
   justify-content: space-evenly;
   align-items: center;
   align-content: center;
@@ -37,7 +36,6 @@
 }
 
 .nav-button-plant-page {
-
   margin-right: 5vw;
   background-color: #183114;
   border-radius: 33px;
@@ -62,13 +60,13 @@
   width: 100vw;
   display: flex;
   justify-content: flex-end;
-  height: 8vh;
+  height: 62px;
   margin-top: 2vh;
 }
 
 .info {
-  padding: 15px;
-  /* padding-bottom: 80px; */
+  padding: 25px;
+  font-size: 2vh;
   font-family: 'Lato', sans-serif;
 }
 
@@ -105,26 +103,14 @@ h4 {
   z-index: 1 
 }
 
-.tiny-pics:hover {
-  position:relative;
-  top:-25px;
-  left:-35px;
-  width:500px;
-  height:auto;
-  display:block;
-  z-index: 1;
-}
 
-.picture-modal {
-  height: 80vh;
-  width: 80vw;
-  z-index: 999;
+.tiny-pics:hover,
+.tiny-pics:focus {
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: transform .3s;
+  opacity: .98;
 }
-
-.lil-pic {
-  overflow-y: visible
-}
-
 
 @media only screen and (max-width: 1100px) {
 .berries {

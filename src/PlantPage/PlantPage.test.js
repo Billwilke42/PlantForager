@@ -1,12 +1,17 @@
 import React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import { render, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import PlantPage from './PlantPage';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 
-const store = createStore(() => ({isLoading: false, hasErrored: '', setPlants: [{
+
+let store = createStore(() => ({
+  isLoading: false, 
+  hasErrored: '', 
+  setPlants: [{
   "id": 111174,
   "common_name": "lawndaisy",
   "slug": "bellis-perennis",
@@ -42,27 +47,77 @@ setPlantInfo: {
   "family": "Asteraceae",
   "duration": null 
 },
-setPlantPageId:'111174'
-
+setPlantPage: true
 }))
 
 
 describe('PlantPage', () => {
-  it('Should render without crashing', () => {
+
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <PlantPage />
+        </Provider>
+      </MemoryRouter> , div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('Should render a common name, a scientific name, locations and year published', () => {
     const { getByText } = render(
       <MemoryRouter>
         <Provider store={store}>
           <PlantPage 
-
             returnHome={jest.fn()}
           />
         </Provider>
       </MemoryRouter>
     )
-
     const commonName = getByText('lawndaisy')
     const scientificName = getByText('Bellis perennis')
-    const locations = getByText('Locations: Madeira, Europe to Medit. and C. Asia')
-    const published = getByText('First Published: 1753')
+    const locations = getByText('Madeira, Europe to Medit. and C. Asia', {exact: false})
+    const published = getByText('1753', {exact: false})
+
+    expect(commonName).toBeInTheDocument()
+    expect(scientificName).toBeInTheDocument()
+    expect(locations).toBeInTheDocument()
+    expect(published).toBeInTheDocument()
+  })
+
+  it('Should be able to return home', () => {
+    const mockReturnHome = jest.fn()
+    
+    const { getByAltText } = render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <PlantPage 
+            returnHome={mockReturnHome}
+          />
+        </Provider>
+      </MemoryRouter>
+    )
+  
+    const returnHomeBtn = getByAltText('return-home')
+
+    fireEvent.click(returnHomeBtn)
+    
+    expect(mockReturnHome).toHaveBeenCalledTimes(1)
+  })
+
+  it('Should render an error message if the fetch fails', () => {
+    store = createStore(() => ({hasErrored: 'Failed to Fetch'}))
+    const { getByText } = render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <PlantPage 
+            returnHome={jest.fn()}
+          />
+        </Provider>
+      </MemoryRouter>
+    )
+    const errorMsg = getByText('Error: Failed to Fetch')
+
+    expect(errorMsg).toBeInTheDocument()
   })
 })
