@@ -1,15 +1,16 @@
 import { getPlantInfo } from '../getPlantInfo'
 
-import { isLoading, hasErrored, setPlants } from '../../actions'
+import { isLoading, hasErrored, setPlantInfo } from '../../actions'
 
 describe('getPlants', () => {
-  let mockID
+  let mockId
   let mockPlantInfo
   let mockDispatch
+  let mockUrl;
 
   beforeEach(() => {
-    mockID = 111174
-    mockPlantInfo = [{
+    mockId = 111174
+    mockPlantInfo = {
       "id": 111174,
       "common_name": "lawndaisy",
       "slug": "bellis-perennis",
@@ -26,50 +27,62 @@ describe('getPlants', () => {
       "genus": "Bellis",
       "family": "Asteraceae",
       "duration": null 
-    }]
+    }
 
+    mockUrl = `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species/${mockId}?&token=pMAzkzZTgwt3C_hk6kdpRu6zVLfcZzqZpwD9w98Ppb8`
     mockDispatch = jest.fn()
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       ok: true,
       json: () => Promise.resolve({
-        plants: mockPlantInfo
-      }) 
+        data: mockPlantInfo
+      }), 
     }))
   })
 
   it('calls dispatch with isLoading(true)', () => {
-    const thunk = getPlantInfo(mockID) // this is the inner function that is returned
+    const thunk = getPlantInfo(mockId) // this is the inner function that is returned
     
     thunk(mockDispatch)
     
     expect(mockDispatch).toHaveBeenCalledWith(isLoading(true))
   })
 
-  // it('calls fetch with the correct param', () => {
-  //   const thunk = getPlantInfo(mockID)
+  it('calls fetch with the correct param', async () => {
+    const thunk = getPlantInfo(mockId)
 
-  //   thunk(mockDispatch)
+    await thunk(mockDispatch)
 
-  //   expect(window.fetch).toHaveBeenCalledWith(mockID)
-  // })
+    expect(window.fetch).toHaveBeenCalledWith(mockUrl)
+  })
 
   it('should dispatch hasErrored with a message if the response is not ok', async () => {
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       ok: false,
-      statusText: 'Header required'
+      statusText: 'Something went wrong'
     }))
     
-    const thunk = getPlantInfo(mockID) // again, this is the inner function that is returned
+    const thunk = getPlantInfo(mockId) // again, this is the inner function that is returned
     
     await thunk(mockDispatch)
     
-    expect(mockDispatch).toHaveBeenCalledWith(hasErrored('Header required'))
+    expect(mockDispatch).toHaveBeenCalledWith(hasErrored('Something went wrong'))
   })
 
-  // it('should dispatch isLoading(false) if the response is ok', async () => {
-  //   const thunk = getPlantInfo(mockID) 
-  //   await thunk(mockDispatch)
+  it('should dispatch isLoading(false) if the response is ok', async () => {
+    const thunk = getPlantInfo(mockId) 
+    await thunk(mockDispatch)
     
-  //   expect(mockDispatch).toHaveBeenCalledWith(isLoading(false))
-  // })
+    expect(mockDispatch).toHaveBeenCalledWith(isLoading(false))
+  })
+
+  it('should dispatch setStaff with the correct params', async () => {
+  
+    const thunk = getPlantInfo(mockId)
+    
+    mockDispatch = jest.fn().mockImplementation(() => mockPlantInfo)
+  
+    await thunk(mockDispatch)
+  
+    expect(mockDispatch).toHaveBeenCalledWith(setPlantInfo(mockPlantInfo))
+  })
 })

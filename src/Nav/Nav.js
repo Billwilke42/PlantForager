@@ -2,7 +2,6 @@ import React from 'react';
 import './Nav.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-// import { setFavoritesPage, setPlantsFromLocation } from '../actions'
 import berries from './berries.png'
 import faveIcon from './fave-page-icon.svg'
 import homeIcon from './home-icon.svg'
@@ -65,21 +64,6 @@ class Nav extends React.Component {
               />
             </label>
           </form>
-          {/* <form className='location-search'>
-            <select name='location' onChange={this.handleChange} data-testid='42' aria-label='Location drop down menu'>
-                <option>Select a Location...</option>
-                <option value='407'>Africa</option>
-                <option value='745'>Antarctic</option>
-                <option value='443'>Asia - Temperate</option>
-                <option value='504'>Asia - Tropical</option>
-                <option value='556'>Australia</option>
-                <option value='644'>Central America</option>
-                <option value='369'>Europe</option>
-                <option value='595'>North America</option>
-                <option value='674'>South America</option>
-            </select>
-            <button type='submit' className='location-btn' onClick={e => this.props.findPlantsInLocation(e, parseInt(this.state.location))}>Enter</button>
-          </form> */}
         <div className='button-section'>
           <Link to='/favorites'>
             <button type='submit' className='nav-button' onClick={() => this.props.showFavorites()}><img className='fave-page-icon' alt='fave-page-icon' src={`${faveIcon}`}/></button>
@@ -92,15 +76,12 @@ class Nav extends React.Component {
 
 Nav.propTypes = {
   favoritesPage: PropTypes.bool,
-  findPlantsInLocation: PropTypes.func,
-  plantsFromLocation: PropTypes.array,
   search: PropTypes.func,
   showFavorites: PropTypes.func
 }
 
-const mapStateToProps = ({ setFavoritesPage, setPlantsFromLocation }) => ({
+const mapStateToProps = ({ setFavoritesPage }) => ({
   favoritesPage: setFavoritesPage,
-  plantsFromLocation: setPlantsFromLocation
 })
 
 export default connect(mapStateToProps, null)(Nav);
