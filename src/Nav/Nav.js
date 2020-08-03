@@ -2,7 +2,7 @@ import React from 'react';
 import './Nav.css'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { setFavoritesPage, setPlantsFromLocation } from '../actions'
+// import { setFavoritesPage, setPlantsFromLocation } from '../actions'
 import berries from './berries.png'
 import faveIcon from './fave-page-icon.svg'
 import homeIcon from './home-icon.svg'
@@ -13,7 +13,6 @@ class Nav extends React.Component {
     super(props)
     this.state = {
       searchInput: '',
-      location: ''
     }
   }
   clearInput() {

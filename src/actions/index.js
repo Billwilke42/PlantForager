@@ -45,7 +45,7 @@ export const setSearch = search => ({
   search
 })
 
-export const resetSearch = search => ({
+export const resetSearch = () => ({
   type: 'RESET_SEARCH',
 })
 

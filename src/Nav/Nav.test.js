@@ -1,6 +1,7 @@
 import React from 'react'
+import ReactDOM from 'react-dom';
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import Nav from './Nav';
 import { Provider } from 'react-redux';
@@ -34,13 +35,25 @@ let store = createStore(rootReducer, {
 }, applyMiddleware(thunk))
 
 describe('Nav', () => {
-  it('Should render without crashing', () => {
+
+  it('renders without crashing', () => {
+
+    const div = document.createElement('div');
+    ReactDOM.render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <Nav />
+        </Provider>
+      </MemoryRouter> , div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+  
+  it('Should render a title', () => {
     const { getByText } = render(
       <BrowserRouter>
-      <Provider store={store}>
-
-        <Nav />
-      </Provider>
+        <Provider store={store}>
+          <Nav />
+        </Provider>
       </BrowserRouter>
     )
 

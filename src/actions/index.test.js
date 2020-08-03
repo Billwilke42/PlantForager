@@ -128,6 +128,29 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction)
   })
 
+  it('Should set the favorites page', () => {
+    const favoritesPage = true
+
+    const expectedAction = {
+      type: "SET_FAVORITES_PAGE",
+      favoritesPage: true
+    }
+
+    const result = actions.setfavoritesPage(favoritesPage)
+
+    expect(result).toEqual(expectedAction)
+  })
+
+  it('Should reset the favorites Page', () => {
+    const expectedAction = {
+      type: "RESET_FAVORITES_PAGE"
+    }
+
+    const result = actions.resetPlantPage()
+
+    expect(result).toEqual(expectedAction)
+  })
+
   it('Should set isLoading', () => {
     const bool = true;
 

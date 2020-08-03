@@ -1,6 +1,7 @@
 import React from 'react'
+import ReactDOM from 'react-dom';
 import { render, fireEvent } from '@testing-library/react';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import PlantPage from './PlantPage';
 import { Provider } from 'react-redux';
@@ -51,7 +52,19 @@ setPlantPage: true
 
 
 describe('PlantPage', () => {
-  it('Should render without crashing', () => {
+
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <PlantPage />
+        </Provider>
+      </MemoryRouter> , div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('Should render a common name, a scientific name, locations and year published', () => {
     const { getByText } = render(
       <MemoryRouter>
         <Provider store={store}>

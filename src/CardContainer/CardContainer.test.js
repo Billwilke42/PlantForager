@@ -1,7 +1,7 @@
 import React from 'react'
-
+import ReactDOM from 'react-dom';
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import CardContainer from './CardContainer';
 import { Provider } from 'react-redux';
@@ -32,6 +32,18 @@ describe('CardContainer', () => {
   }],
   setFavorites: []
 }))
+
+it('renders without crashing', () => {
+
+  const div = document.createElement('div');
+  ReactDOM.render(
+    <MemoryRouter>
+      <Provider store={store}>
+        <CardContainer />
+      </Provider>
+    </MemoryRouter> , div);
+  ReactDOM.unmountComponentAtNode(div);
+});
 
   it('Should render a plant card', async () => {
     const { getByText } = render(

@@ -1,6 +1,7 @@
 import React from 'react'
+import ReactDOM from 'react-dom';
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import PlantCard from './PlantCard'
 import { Provider } from 'react-redux';
@@ -34,7 +35,18 @@ const plant = {
 }
 
 describe('PlantCard', () => {
-  it('Should render without crashing', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+      <MemoryRouter>
+        <Provider store={store}>
+          <PlantCard plant={plant} />
+        </Provider>
+      </MemoryRouter> , div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
+
+  it('Should render a name', () => {
     const { getByText} = render(
       <BrowserRouter>
         <Provider store={store}>
@@ -44,6 +56,20 @@ describe('PlantCard', () => {
     )
 
     const name = getByText('wild celery', {exact: false})
+
+    expect(name).toBeInTheDocument()
+  })
+
+  it('Should render a scientific name', () => {
+    const { getByText} = render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <PlantCard plant={plant} /> 
+        </Provider>
+      </BrowserRouter>
+    )
+
+    const name = getByText('Apium graveolens', {exact: false})
 
     expect(name).toBeInTheDocument()
   })
