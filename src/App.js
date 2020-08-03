@@ -55,7 +55,6 @@ class App extends React.Component {
     this.props.setFavoritesPage(true)
   }
  
-
   handleClick = async (event) => {
     const id = event.target.id
     await this.props.setPlantPage(true)
@@ -80,12 +79,11 @@ class App extends React.Component {
   render() {
     if (this.props.error) {
       return (
-      <div className="App">
-        <p className='error-msg'>Error: {this.props.error}</p>
-        <p>Sorry! Try Reloading the Page</p>
-      </div>
+        <div className="App">
+          <p className='error-msg'>Error: {this.props.error}</p>
+          <p>Sorry! Try Reloading the Page</p>
+        </div>
       )
-
     }
     return (
       <div className="App">

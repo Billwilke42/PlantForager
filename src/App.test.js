@@ -6,12 +6,43 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'
 import { rootReducer } from './reducers/index';
-import { getPlantInfo } from './thunks/getPlantInfo'
 import thunk from 'redux-thunk';
+import { getPlantInfo } from './thunks/getPlantInfo'
+import { getPlants } from './thunks/getPlants'
 
 let store;
 
 describe('App', () => {
+  let mockPlants;
+  let mockPlantInfo;
+  let mockDispatch
+  // beforeEach(() => {
+  //   mockPlants = [{
+  //       "id": 111174,
+  //       "common_name": "lawndaisy",
+  //       "slug": "bellis-perennis",
+  //       "scientific_name": "Bellis perennis",
+  //       "year": 1753,
+  //       "bibliography": "Sp. Pl.: 886 (1753)",
+  //       "author": "L.",
+  //       "status": "accepted",
+  //       "rank": "species",
+  //       "family_common_name": "Aster family",
+  //       "genus_id": 780,
+  //       "observations": "Madeira, Europe to Medit. and C. Asia",
+  //       "image_url": "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
+  //       "genus": "Bellis",
+  //       "family": "Asteraceae",
+  //       "duration": null
+  //     }]
+  //  mockDispatch = jest.fn()
+  //  window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+  //    ok: true,
+  //    json: () => Promise.resolve({
+  //      data: mockPlants
+  //    })
+  //  }))
+  // })
   it('Should render a Nav Component and a PlantCard', async () => {
     store = createStore(rootReducer, {
           isLoading: false,
@@ -36,6 +67,7 @@ describe('App', () => {
           }],
           setPlantInfo: {},
           setPlantPage: false,
+          setFavorites: []
         }, applyMiddleware(thunk))
 
     const { getByText } = render(
@@ -50,6 +82,7 @@ describe('App', () => {
     const name = await waitFor(() => getByText('lawndaisy', {exact: false}))
 
     expect(title).toBeInTheDocument()
+    expect(name).toBeInTheDocument()
   })
 
   it('Should render a loading screen on plantCard click', () => {
@@ -67,56 +100,65 @@ describe('App', () => {
     expect(loading).toBeInTheDocument()
   })
 
-  it('Should render a plantPage', async () => {
-    const { getByText, debug, getByTestId } = render(
-      <MemoryRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </MemoryRouter>
-    )
-    const plantCard = getByTestId('111174')
+  // it('Should render a plantPage', async () => {
+  //     mockPlantInfo = {
+  //       "id": 111174,
+  //       "common_name": "lawndaisy",
+  //       "slug": "bellis-perennis",
+  //       "scientific_name": "Bellis perennis",
+  //       "year": 1753,
+  //       "bibliography": "Sp. Pl.: 886 (1753)",
+  //       "author": "L.",
+  //       "status": "accepted",
+  //       "rank": "species",
+  //       "family_common_name": "Aster family",
+  //       "genus_id": 780,
+  //       "observations": "Madeira, Europe to Medit. and C. Asia",
+  //       "image_url": "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
+  //       "genus": "Bellis",
+  //       "family": "Asteraceae",
+  //       "duration": null
+  //     }
+
+  //     mockDispatchDispatch = jest.fn()
+  //     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+  //       ok: true,
+  //       json: () => Promise.resolve({
+  //         data: mockPlantInfo
+  //       })
+  //     }))
+  //   const { getByText, getByTestId } = render(
+  //     <MemoryRouter>
+  //       <Provider store={store}>
+  //         <App />
+  //       </Provider>
+  //     </MemoryRouter>
+  //   )
+  //   const plantCard = getByTestId('111174')
     
-    fireEvent.click(plantCard)
-    
-    store = createStore(rootReducer, {isLoading: false, hasErrored: '', setPlantInfo: {
-        "id": 111174,
-          "common_name": "lawndaisy",
-          "slug": "bellis-perennis",
-          "scientific_name": "perennis",
-          "year": 1753,
-          "bibliography": "Sp. Pl.: 886 (1753)",
-          "author": "L.",
-          "status": "accepted",
-          "rank": "species",
-          "family_common_name": "Aster family",
-          "genus_id": 780,
-          "observations": "Madeira, Europe to Medit. and C. Asia",
-          "image_url": "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
-          "genus": "Bellis",
-          "family": "Asteraceae",
-          "duration": null
-    }})
-    // debug
-  })
-    // getPlantInfo.mockResolvedValue = {
-    //   "id": 111174,
-    //     "common_name": "lawndaisy",
-    //     "slug": "bellis-perennis",
-    //     "scientific_name": "perennis",
-    //     "year": 1753,
-    //     "bibliography": "Sp. Pl.: 886 (1753)",
-    //     "author": "L.",
-    //     "status": "accepted",
-    //     "rank": "species",
-    //     "family_common_name": "Aster family",
-    //     "genus_id": 780,
-    //     "observations": "Madeira, Europe to Medit. and C. Asia",
-    //     "image_url": "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
-    //     "genus": "Bellis",
-    //     "family": "Asteraceae",
-    //     "duration": null
-    // }
+  //   fireEvent.click(plantCard)
+  //   jest.spyOn(getPlantInfo).mockImplementation(()=> Promise.resolve())
+  //   store = createStore(rootReducer, {isLoading: false, hasErrored: '', setPlantInfo: {
+  //         "id": 111174,
+  //         "common_name": "lawndaisy",
+  //         "slug": "bellis-perennis",
+  //         "scientific_name": "perennis",
+  //         "year": 1753,
+  //         "bibliography": "Sp. Pl.: 886 (1753)",
+  //         "author": "L.",
+  //         "status": "accepted",
+  //         "rank": "species",
+  //         "family_common_name": "Aster family",
+  //         "genus_id": 780,
+  //         "observations": "Madeira, Europe to Medit. and C. Asia",
+  //         "image_url": "https://bs.floristic.org/image/o/43061c6c2cb49908503eac2eaec0ddab69958e17",
+  //         "genus": "Bellis",
+  //         "family": "Asteraceae",
+  //         "duration": null
+  //   }, setPlantPage: true}, applyMiddleware(thunk))
+  //   console.log(store)
+  //   const location = await waitFor(() => getByText('Location:'))
+  // })
   //   store.setPlants = [{
   //     "id": 111174,
   //       "common_name": "lawndaisy",
@@ -144,4 +186,4 @@ describe('App', () => {
   //   const firstPublished = await waitFor(() => getByText('First Published:'))
   // })
 
-})
+ })

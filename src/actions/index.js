@@ -21,7 +21,6 @@ export const resetPlantInfo = () => ({
   type: 'RESET_PLANT_INFO'
 })
 
-
 export const resetPlantPage = () => ({
   type: 'RESET_PLANT_PAGE',
 })

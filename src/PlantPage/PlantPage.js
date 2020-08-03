@@ -79,7 +79,7 @@ PlantPage.propTypes = {
 const mapStateToProps = ({ isLoading, hasErrored, setPlantPageId, setPlantInfo, setPlantPage }) => ({
   isLoading: isLoading,
   error: hasErrored,
-  plantPageId: setPlantPageId,
+  plantPage: setPlantPage,
   plantInfo: setPlantInfo,
   plantsPage: setPlantPage
 })

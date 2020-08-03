@@ -52,7 +52,7 @@ PlantCard.propTypes = {
 }
 
 const mapStateToProps = ({ setFavorites }) => ({
-  favorites: setFavorites,
+  favorites: setFavorites
 })
 
 export default connect(mapStateToProps, null)(PlantCard);
