@@ -35,6 +35,10 @@ export const setFavoritesPage = bool => ({
   favoritesPage: bool
 })
 
+export const resetFavoritesPage = () => ({
+  type: 'RESET_FAVORITES_PAGE',
+})
+
 export const setFavorites = favorites => ({
   type: 'SET_FAVORITES',
   favorites

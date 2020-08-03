@@ -12,11 +12,11 @@ import { createMemoryHistory } from 'history'
 import { getPlantInfo } from './thunks/getPlantInfo'
 import { getPlants } from './thunks/getPlants'
 // jest.mock = require(('./thunks/getPlants'))
-let store;
+ let store;
 // jest.mock('./thunks/getPlants', () => ({
 //   getPlants: jest.fn(),
 // }))
-// jest.mock('util/log', () => ({
+// // jest.mock('util/log', () => ({
 //   log: {
 //       debug: jest.fn(),
 //       info: jest.fn(),
