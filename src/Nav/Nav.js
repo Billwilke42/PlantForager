@@ -29,9 +29,9 @@ class Nav extends React.Component {
     if(this.props.favoritesPage) {
       return (
         <header className='nav-container'>
-          <img src={`${berries}`} className='berries'/>
+          <img src={`${berries}`} alt='berries' className='berries'/>
         <section className='title-section-favorites'>
-          <h1 className='favorites-title'><img className='fave-page-icon-title' src={`${faveIcon}`}/>Favorites:</h1>
+          <h1 className='favorites-title'><img className='fave-page-icon-title' alt='fave-page-button' src={`${faveIcon}`}/>Favorites:</h1>
         </section>
         <div className='button-section'>
           <Link to='/'>

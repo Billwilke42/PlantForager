@@ -61,12 +61,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.getPlants(1)
+    this.props.getPlants(1)
     this.props.getPlants(2)
-    // this.props.getPlants(3)
-    // this.props.getPlants(4)
-    // this.props.getPlants(5)
-    // this.props.getPlants(6)
+    this.props.getPlants(3)
+    this.props.getPlants(4)
+    this.props.getPlants(5)
+    this.props.getPlants(6)
   }
   
   render() {
@@ -77,7 +77,6 @@ class App extends React.Component {
           <p className='error-msg'>Sorry! Try Reloading the Page</p>
         </div>
       )
-
     }
     return (
       <div className="App">
@@ -105,6 +104,7 @@ class App extends React.Component {
             render={({match}) => {
               const { id } = match.params
                 return <PlantPage
+                  id={id}
                   returnHome={this.returnHome} /> 
                 }}> 
                 {!this.props.plantsPage && <Redirect to='/'/>}

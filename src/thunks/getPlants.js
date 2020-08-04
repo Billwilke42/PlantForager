@@ -8,7 +8,6 @@ export const getPlants = (pageNum) => {
     try {
       dispatch(isLoading(true))
       const response = await fetch(url)
-      console.log(response)
       if (!response.ok) {
         throw Error(response.statusText)
       }

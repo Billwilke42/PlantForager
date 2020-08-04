@@ -56,8 +56,9 @@ const PlantPage = (props) => {
         {images && images.map(image => {
           return (
             <img 
+              alt='tiny-pic'
               src={image.image_url} 
-              className='lil-pic' value={image.image_url} 
+              value={image.image_url} 
               onClick={e => document.getElementById('main-pic').setAttribute('src', e.target.src)} 
               className='tiny-pics' key={image.id} id={image.id}
             />

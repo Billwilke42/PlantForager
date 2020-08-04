@@ -1,21 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import { BrowserRouter, MemoryRouter, Router } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
 import '@testing-library/jest-dom/extend-expect';
 import App from './App';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'
 import { rootReducer } from './reducers/index';
 import thunk from 'redux-thunk';
-import configureMockStore from 'redux-mock-store'  
-
-
-const middlewares = [thunk]
-const mockStore = configureMockStore(middlewares)
 import { createMemoryHistory } from 'history'
-import { getPlantInfo } from './thunks/getPlantInfo'
-import { getPlants } from './thunks/getPlants'
+
 
 let store;
 
@@ -125,7 +119,7 @@ it('Should change path on plant card click and be able to return home',   async 
       </MemoryRouter>
     )
     const plantCard = getByTestId('111174')
-    console.log(store)
+
     fireEvent.click(plantCard)
     const loading = getByText('Loading')
     expect(loading).toBeInTheDocument()
