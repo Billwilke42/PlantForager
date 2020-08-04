@@ -62,11 +62,11 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.getPlants(1)
-    // this.props.getPlants(2)
-    // this.props.getPlants(3)
-    // this.props.getPlants(4)
-    // this.props.getPlants(5)
-    // this.props.getPlants(6)
+    this.props.getPlants(2)
+    this.props.getPlants(3)
+    this.props.getPlants(4)
+    this.props.getPlants(5)
+    this.props.getPlants(6)
   }
   
   render() {
