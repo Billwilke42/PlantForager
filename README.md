@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Plant Forager
 
-## Available Scripts
+## Abstract
 
-In the project directory, you can run:
+This project was completed for the Turing School of Software and Design and is my Module 3 Final Project. We were given some freedom to use an API of our choosing to create an App using React, Router, and Asynchrounous JavaScript. I settle on trefle.io as the API of choice, to make an App that is a "Field Guide" to those looking for edible plants. There were many challenges to this project. The API was tricky because it required Cross-Origin-Resource-Sharing('CORS') as well as other quirks such as sending plants that were desperately lacking in information, as well as pagination. I chose to implement Redux as well in this project because I wanted to get a better grasp on mocking fetch calls and redux integration testing. This proved to be extremely difficult, and there are many things I wish I knew earlier, like not implementing node-fetch like it called for in the documentation for the API. Overall I'm very happy with how it turned out, there was another feature I wanted to implement, where a user could see which plants had edible leave, roots, flower, etc, but trying to mock the thunks took priority. I look forward to expanding on this project in the future.
 
-### `npm start`
+## Contributors
+- [Bill Wilke](https://github.com/Billwilke42)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Technologies Used
+- React
+- Redux
+- Redux Thunk
+- CSS
+- Git
+- JavaScript
+- React Testing Library
+- React Router
+- Jest
+- Eslint
+-[trefle.io Api](trefle.io)
 
-### `npm test`
+## Setup
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Go to this repository and follow the directions in the README.md : https://github.com/BillWilke42/PlantForager
 
-### `npm run build`
+2. Clone down this repo
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Get into the repo by running```cd PlantForager``` in your terminal
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+4. Then install the library dependencies. Run in your terminal:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+5. Run `npm start` in your terminal. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+6. Go to `http://localhost:3000/` in your browser and you should see the page!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+7. When ready to quit hit `ctrl + c` in your terminal to stop the server.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## GIF's
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Homepage
+![Hompage](https://media.giphy.com/media/TkD1cSssfsFPRl0B3r/giphy.gif)
+### Searching
+![Searching](https://media.giphy.com/media/WQr4OdCnlGpc37ldtK/giphy.gif)
+### Favoriting
+![Favoriting](https://media.giphy.com/media/hqV0QQd6NAC46oizty/giphy.gif)
+### Plant Page
+![PlantPage](https://media.giphy.com/media/XbrhEOfyK6SRLTXwxW/giphy.gif)
