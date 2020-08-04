@@ -3,15 +3,6 @@ export const setPlants = plants => ({
   plants
 })
 
-export const setPlantsFromLocation = plantsFromLocation => ({
-  type: 'SET_PLANTS_FROM_LOCATION',
-  plantsFromLocation
-})
-
-export const resetPlantsFromLocation = () => ({
-  type: 'RESET_PLANTS_FROM_LOCATION',
-})
-
 export const setPlantInfo = plantInfo => ({
   type: 'SET_PLANT_INFO',
   plantInfo

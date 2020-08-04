@@ -5,8 +5,6 @@ import Nav from './Nav/Nav'
 import CardContainer from './CardContainer/CardContainer'
 import PlantPage from './PlantPage/PlantPage'
 import { 
-  setPlantsFromLocation,
-  resetPlantsFromLocation,
   resetPlantInfo, 
   setPlantPage, 
   resetPlantPage, 
@@ -17,17 +15,12 @@ import {
   removeFavorites } from './actions'
 import { getPlants } from './thunks/getPlants'
 import { getPlantInfo } from './thunks/getPlantInfo'
-import { getPlantsInLocation } from './thunks/getPlantsInLocation'
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-class App extends React.Component {
 
-  findPlantsInLocation = (e, locationZone) => {
-    e.preventDefault()
-    this.props.getPlantsInLocation(locationZone)
-  }
+class App extends React.Component {
 
   search = (searchInputValue) => {
     setTimeout(() => {
@@ -55,7 +48,6 @@ class App extends React.Component {
     this.props.setFavoritesPage(true)
   }
  
-
   handleClick = async (event) => {
     const id = event.target.id
     await this.props.setPlantPage(true)
@@ -94,7 +86,6 @@ class App extends React.Component {
             <Nav 
               showFavorites={this.showFavorites}
               search={this.search}
-              findPlantsInLocation={this.findPlantsInLocation}
             />
             <CardContainer 
               handleClick={this.handleClick} 
@@ -125,7 +116,7 @@ class App extends React.Component {
 }
 
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, setPlantInfo, setFavorites, setFavoritesPage, setSearch, setPlantsFromLocation, setPlantPage }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, setPlantInfo, setFavorites, setFavoritesPage, setSearch, setPlantPage }) => ({
   isLoading: isLoading,
   error: hasErrored,
   plants: [].concat.apply([], setPlants),
@@ -134,7 +125,6 @@ const mapStateToProps = ({ isLoading, hasErrored, setPlants, setPlantPageId, set
   favorites: setFavorites,
   favoritesPage: setFavoritesPage,
   search: setSearch,
-  plantsFromLocation: setPlantsFromLocation,
   plantsPage: setPlantPage
 })
 
@@ -145,10 +135,8 @@ App.propTypes = {
   favoritesPage: PropTypes.bool,
   getPlantInfo: PropTypes.func,
   getPlants: PropTypes.func,
-  getPlantsInLocation: PropTypes.func,
   plantInfo: PropTypes.object,
   plants: PropTypes.array,
-  plantsFromLocation: PropTypes.array,
   removeFavorites: PropTypes.func,
   resetPlantInfo: PropTypes.func,
   resetPlantPageId: PropTypes.func,
@@ -161,7 +149,7 @@ App.propTypes = {
 }
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({ getPlants, getPlantInfo, resetPlantInfo, resetPlantPage, setPlantPage, setFavoritesPage, setFavorites, removeFavorites, setSearch, resetSearch, getPlantsInLocation }, dispatch)
+  bindActionCreators({ getPlants, getPlantInfo, resetPlantInfo, resetPlantPage, setPlantPage, setFavoritesPage, setFavorites, removeFavorites, setSearch, resetSearch }, dispatch)
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

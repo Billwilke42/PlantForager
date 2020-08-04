@@ -91,18 +91,16 @@ CardContainer.propTypes = {
   hasErrored: PropTypes.func,
   isLoading: PropTypes.bool,
   plants: PropTypes.array,
-  plantsFromLocation: PropTypes.array,
   search: PropTypes.string,
 }
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlants, setFavoritesPage, setFavorites, setSearch, setPlantsFromLocation }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlants, setFavoritesPage, setFavorites, setSearch }) => ({
   isLoading: isLoading,
   error: hasErrored,
   plants: [].concat.apply([], setPlants),
   favorites: setFavorites,
   favoritesPage: setFavoritesPage,
   search: setSearch,
-  plantsFromLocation: setPlantsFromLocation
 })
 
 const mapDispatchToProps = dispatch => (
