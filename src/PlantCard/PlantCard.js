@@ -1,9 +1,7 @@
 import React from 'react'
 import './PlantCard.css'
 import { Link } from 'react-router-dom'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { setFavorites, setPlantInfo } from '../actions'
 import heartOutlineIcon from './heart-outline.png'
 import redHeartIcon from './heart-red.png'
 import PropTypes from 'prop-types';

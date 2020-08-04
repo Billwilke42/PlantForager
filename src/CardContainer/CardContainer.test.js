@@ -6,7 +6,6 @@ import '@testing-library/jest-dom/extend-expect';
 import CardContainer from './CardContainer';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux'
-import { setFavorites } from '../actions';
 
 describe('CardContainer', () => {
   const store = createStore(() => ({

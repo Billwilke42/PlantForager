@@ -27,18 +27,12 @@ const CardContainer = (props) => {
   }
   if (props.plants.length > 0) {
     const plantsCopy = []
-    const removeNullPlants = () => {
-      if (props.plants.length > 0) {
-        props.plants.filter((plant, i) => {
-          if (plant.image_url !== null && plant.common_name !== null) {
-              plantsCopy.push(plant) 
-            }
-          })
-      }
-    }
-    removeNullPlants()
+    props.plants.filter((plant, i) => {
+      if (plant.image_url !== null && plant.common_name !== null) {
+         return plantsCopy.push(plant) 
+        }
+      })
     if(props.search) {
-    
       const searchedPlants = plantsCopy.filter(plant => {
         if(plant.common_name.includes(props.search)) {
           return plant
@@ -68,7 +62,6 @@ const CardContainer = (props) => {
         addOrRemoveAFavorite={props.addOrRemoveAFavorite}
       />
     ))
-
     return (
       <section className='cards-container'>
         {displayCards}

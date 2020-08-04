@@ -3,7 +3,6 @@ import { isLoading, hasErrored, setPlantInfo } from '../actions'
 
 export const getPlantInfo = (id) => {
   const url = `https://cors-anywhere.herokuapp.com/https://trefle.io/api/v1/species/${id}?&token=pMAzkzZTgwt3C_hk6kdpRu6zVLfcZzqZpwD9w98Ppb8`
-  console.log('here')
   return async (dispatch) =>  {
     dispatch(isLoading(true))
     try {
