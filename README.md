@@ -45,7 +45,7 @@ npm install
 ## GIF's
 
 ### Homepage
-![Hompage](https://media.giphy.com/media/dsQz3auSxRssYVzmZx/giphy.gif)
+![Hompage](https://media.giphy.com/media/d5kyGuX6VbhO0PLYEp/giphy.gif)
 ### Searching
 ![Searching](https://media.giphy.com/media/WQr4OdCnlGpc37ldtK/giphy.gif)
 ### Favoriting
