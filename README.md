@@ -2,7 +2,7 @@
 
 ## Abstract
 
-This project was completed for the Turing School of Software and Design and is my Module 3 Final Project. We were given some freedom to use an API of our choosing to create an App using React, Router, and Asynchrounous JavaScript. I settle on trefle.io as the API of choice, to make an App that is a "Field Guide" to those looking for edible plants. There were many challenges to this project. The API was tricky because it required Cross-Origin-Resource-Sharing('CORS') as well as other quirks such as sending plants that were desperately lacking in information, as well as pagination. I chose to implement Redux as well in this project because I wanted to get a better grasp on mocking fetch calls and redux integration testing. This proved to be extremely difficult, and there are many things I wish I knew earlier, like not implementing node-fetch like it called for in the documentation for the API. Overall I'm very happy with how it turned out, there was another feature I wanted to implement, where a user could see which plants had edible leave, roots, flower, etc, but trying to mock the thunks took priority. I look forward to expanding on this project in the future.
+This project was completed for the Turing School of Software and Design and is my Module 3 Final Project. We were given some freedom to use an API of our choosing to create an App using React, Router, and Asynchrounous JavaScript. I settle on trefle.io as the API of choice, to make an App that is a "Field Guide" to those looking for edible plants. There were many challenges to this project. The API was tricky because it required Cross-Origin-Resource-Sharing('CORS') as well as other quirks such as sending plants that were desperately lacking in information, as well as pagination. I chose to implement Redux as well in this project because I wanted to get a better grasp on mocking fetch calls and redux integration testing. This proved to be extremely difficult, and there are many things I wish I knew earlier, like not implementing node-fetch like it called for in the documentation for the API. Overall I'm very happy with how it turned out, there was another feature I wanted to implement, where a user could see which plants had edible leaves, roots, flower, etc, but trying to mock the thunks took priority. I look forward to expanding on this project in the future.
 
 ## Contributors
 - [Bill Wilke](https://github.com/Billwilke42)
@@ -45,7 +45,7 @@ npm install
 ## GIF's
 
 ### Homepage
-![Hompage](https://giphy.com/gifs/d5kyGuX6VbhO0PLYEp)
+![Hompage](https://media.giphy.com/media/jswWdiQVjPUVuOBuA5/giphy-downsized-large.gif)
 ### Searching
 ![Searching](https://media.giphy.com/media/WQr4OdCnlGpc37ldtK/giphy.gif)
 ### Favoriting
