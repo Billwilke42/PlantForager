@@ -77,7 +77,7 @@ PlantPage.propTypes = {
   returnHome: PropTypes.func,
 }
 
-const mapStateToProps = ({ isLoading, hasErrored, setPlantPageId, setPlantInfo, setPlantPage }) => ({
+const mapStateToProps = ({ isLoading, hasErrored, setPlantInfo, setPlantPage }) => ({
   isLoading: isLoading,
   error: hasErrored,
   plantPage: setPlantPage,

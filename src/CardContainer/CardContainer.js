@@ -27,12 +27,13 @@ const CardContainer = (props) => {
   }
   if (props.plants.length > 0) {
     const plantsCopy = []
-    props.plants.filter((plant, i) => {
+    props.plants.forEach(plant => {
       if (plant.image_url !== null && plant.common_name !== null) {
-         return plantsCopy.push(plant) 
+         plantsCopy.push(plant) 
         }
       })
     if(props.search) {
+      //eslint-disable-next-line
       const searchedPlants = plantsCopy.filter(plant => {
         if(plant.common_name.includes(props.search)) {
           return plant
