@@ -7,12 +7,9 @@ This project was completed for the Turing School of Software and Design and is m
 ## Contributors
 - [Bill Wilke](https://github.com/Billwilke42)
 
-## Deployed Site
+## Deployed
 
-Currently down due to the endpoints changing on the API, will be up as soon as I am done with Turing!
-
-
-~https://plant-forager.netlify.app/~
+https://plant-forager.netlify.app/
 
 ## Technologies Used
 - React
