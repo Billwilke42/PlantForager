@@ -49,7 +49,7 @@
 .lower-images {
   background-color: #dcde9f;
   width: 100vw;
-  height: 35%;
+  height: 33%;
   overflow-x: scroll;
   overflow-y: hidden;
   display: flex;
