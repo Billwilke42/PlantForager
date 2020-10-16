@@ -6,7 +6,7 @@ export const getPlantInfo = (id) => {
   return async (dispatch) =>  {
     dispatch(isLoading(true))
     try {
-      const response = await fetch(url)
+      const response = await fetch(url, {header: 'Access-Control-Allow-Origin'})
       if (!response.ok) {
         throw Error(response.statusText)
       }
