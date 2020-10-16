@@ -67,8 +67,8 @@ class App extends React.Component {
     this.props.getPlants(4)
     this.props.getPlants(5)
     this.props.getPlants(6)
-    this.props.getPlants(7)
-    this.props.getPlants(8)
+    // this.props.getPlants(7)
+    // this.props.getPlants(8)
   }
   
   render() {
